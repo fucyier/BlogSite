@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Post>
+
+<aside class="widget">
+    <h2 class="widget-title ribbon"><span>EN COK OKUNANLAR</span></h2>
+    <div class="entries row">
+        @foreach (var item in Model)
+        {
+            <article class="type-post style-media-list media col-sm-6 col-md-12">
+                <!-- to disable lazy loading, remove data-src and data-src-retina -->
+                <img src="~/Contents/img/11.png" @*data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160"*@ width="80" height="80" class="media-object pull-left" alt="">
+                <!--fallback for no javascript browsers-->
+                <noscript>
+                    <img src="http://placehold.it/80x80" alt="">
+                </noscript>
+                <div class="media-body">
+                    <h3 class="entry-title">
+                        @Html.ActionLink(item.PostTitle, "Detail", "Post", new { postId = item.GenerateSlug() }, null)
+                    </h3>
+                    <div class="entry-meta">
+                        <span class="entry-date">@item.PostDate.ToShortDateString()</span>
+                        <span class="category">In 
+                        @foreach (var tagItem in item.Tags)
+                        {
+                            @Html.ActionLink(tagItem.TagText, "Index", "Nav", new { postTagId = tagItem.TagId }, null)
+                            @:&nbsp
+                        }    
+                        </span>
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+</aside><!--/.widget-->

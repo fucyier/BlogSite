@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Giriş Ekranı</title>
+
+    <link href="~/Content/login.css" rel="stylesheet" />
+
+    <script src="~/Scripts/prefixfree.min.js"></script>
+</head>
+<body>
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+        <div>Y.T.<span> Login</span></div>
+    </div>
+    <br>
+    @RenderBody()
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
+
+

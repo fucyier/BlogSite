@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Post>
+
+@{
+    int i = 0;
+}
+
+<aside id="reviewCarousel" class="widget carousel slide">
+    <h2 class="widget-title ribbon"><span>EN COK YORUM ALANLAR</span></h2>
+
+    <div class="carousel-inner">
+        @foreach (var item in Model)
+        {string divClass="";
+            if (i==1)
+            {
+                divClass = "item active";
+            }
+            else
+            {
+                divClass = "item";
+            }
+            <div class="@divClass">
+                <article class="entry style-grid style-review type-post">
+                    <header class="entry-header">
+                        <h3 class="entry-title">@Html.ActionLink(item.PostTitle, "Detail", "Post", new { postId = item.GenerateSlug() }, null) </h3>
+                        <p class="small">@item.PostShortDetail</p>
+                    </header>
+                    <div class="style-review-score">
+                        @item.Comments.Count()
+                    </div>
+                    <figure class="entry-thumbnail">
+                        <img alt="" width="480" height="280" src="@Url.Action("GetImage", "Post",new { item.PostId })" />
+                    </figure>
+                </article>
+               
+            </div>
+            i = i + 1;
+
+        }
+    </div><!--/.carousel-inner-->
+    <a class="left carousel-control" href="#reviewCarousel" data-slide="prev">
+        <span class="icon icon-angle-left"></span>
+    </a>
+    <a class="right carousel-control" href="#reviewCarousel" data-slide="next">
+        <span class="icon icon-angle-right"></span>
+      
+    </a>
+</aside><!--/.widget.carousel-->

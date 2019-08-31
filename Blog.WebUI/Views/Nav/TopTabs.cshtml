@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Tag>
+
+@{
+    int i = 0;
+}
+
+
+<div class="row subnav-wrapper subnav-tabbed">
+
+    <ul class="col-md-2 col-sm-2 subnav-tabbed-tabs alignright">
+        @foreach (var item in Model)
+        {
+            if (i == 0)
+            {
+                <li class="active">
+                    <a href=@string.Concat("#",item.TagText.Replace(" ","").Replace("/","_").Replace("#","_").Replace(".","_"))>@item.TagText </a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href=@string.Concat("#",item.TagText.Replace(" ","").Replace("/","_").Replace("#","_").Replace(".","_"))>@item.TagText</a>
+                </li>
+            }
+            i = i + 1;
+        }
+
+    </ul>
+    <div class="col-md-10 col-sm-10 subnav-tabbed-panels">
+        @{
+            int b = 0;
+        }
+        @foreach (var item in Model)
+        {
+            if (b == 0)
+            {
+                <div id="@item.TagText.Replace(" ","").Replace("/","_").Replace("#","_").Replace(".","_")" class="subnav-tabbed-panel active">
+                    @Html.Action("SelectedTopics", "Nav",new { TagId=item.TagId})
+                </div>
+            }
+            else
+            {
+                <div id="@item.TagText.Replace(" ","").Replace("/","_").Replace("#","_").Replace(".","_")" class="subnav-tabbed-panel">
+
+                    @Html.Action("SelectedTopics", "Nav", new { TagId = item.TagId })
+
+                </div>
+            }
+
+            b = b + 1;
+        }
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Post>
+
+<aside class="widget">
+    <h2 class="widget-title ribbon"><span>SECILEN YAZILAR</span></h2>
+    <div class="entries row">
+        @foreach (var post in Model)
+        {
+            <article class="type-post style-media-list media col-sm-6 col-md-12">
+                <!-- to disable lazy loading, remove data-src and data-src-retina -->
+                <img  class="media-object pull-left" alt="" width="80" height="80"  src="@Url.Action("GetImage", "Post",new { post.PostId })" />
+             
+              
+                <div class="media-body">
+                    <h3 class="entry-title">
+                        @Html.ActionLink(post.PostTitle, "Detail", "Post", new { postId = post.GenerateSlug() }, null)
+                    </h3>
+                    <div class="entry-meta">
+                        <span class="entry-date">@post.PostDate.ToShortDateString()</span>
+                        <span class="category">
+                            In
+                            @foreach (var item in post.Tags)
+                            {
+                            @Html.ActionLink(item.TagText, "Index", "Nav", new { postTagId = item.TagId }, null)
+                                @:&nbsp
+                            }
+                        </span>
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+</aside>

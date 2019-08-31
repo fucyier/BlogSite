@@ -1,0 +1,88 @@
+﻿@model Blog.WebUI.Areas.Admin.Models.AccountModels.EditViewModel
+@{
+    ViewBag.Title = "Kullanıcı Bilgi Güncelleme";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+ <br />
+
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.Label("Kullanıcı Adı", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ApplicationUser.UserName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Telefon", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ApplicationUser.PhoneNumber, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("E-Posta", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m =>m.ApplicationUser.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Ad", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ApplicationUser.FirstName, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Soyad", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ApplicationUser.LastName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <table>
+                <tr>
+                    @{
+                        int cnt = 0;
+                        List<Blog.WebUI.Areas.Admin.Models.AccountModels.AssignedRoleData> tags = ViewBag.Tags;
+
+                        foreach (var tag in tags)
+                        {
+                            if (cnt++ % 3 == 0)
+                            {
+                            @:</tr><tr>
+                            }
+                            @:<td>
+                                <input type="checkbox"
+                                       name="selectedRoles"
+                                       value="@tag.RoleID"
+                                       @(Html.Raw (!User.Identity.IsAdmin() ? "disabled=\"disabled\"" : ""))
+                                       @(Html.Raw(tag.Assigned ? "checked=\"checked\"" : "")) />
+                                @tag.RoleName
+                            @:</td>
+                        }
+                    @:</tr>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Güncelle" />
+            </div>
+        </div>
+    }
+
+@section Scripts {
+    <script type="text/javascript">
+        $("form").on("submit", function (e) {
+            $("input:checkbox").prop("disabled", false);
+        });
+    </script>
+  
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,41 @@
+﻿@model Blog.Domain.Concrete.Post
+
+<article class="entry style-media media type-post">
+    <figure class="media-object pull-left entry-thumbnail hidden-xs">
+     
+       
+
+        <img alt="" width="230" height="230" src="@Url.Action("GetImage", "Post",new { Model.PostId })" />
+    </figure>
+    <div class="media-body">
+        <header class="entry-header">
+            <h3 class="entry-title">
+                @*<a href="single.html" rel="bookmark">Sunt in culpa qui officia deserunt mollit anim.</a>*@
+                @Html.ActionLink(Model.PostTitle, "Detail", "Post", new { postId = Model.GenerateSlug() }, null)
+            </h3>
+            <div class="entry-meta">
+                <span class="author">by @Model.Author.AuthorName</span>
+                <span class="entry-date">@Model.PostDate.ToShortDateString()</span>
+                <span class="category">
+                    In @foreach (var item in Model.Tags)
+                    {
+                        @Html.ActionLink(item.TagText, "Index", "Nav", new { postTagId = item.TagId }, null)
+                        @:&nbsp
+                    }
+
+                </span>
+            </div>
+        </header>
+        <p>
+            @Model.PostShortDetail
+            <br />
+            <br />
+            <a href="@Url.Action("Detail","Post", new { postId = @Model.GenerateSlug() })">
+               Devamını Oku
+                <i class="glyphicon glyphicon-share-alt"></i>
+                <span class="sr-only">Continue Reading</span>
+            </a>
+            @*<a href="single.html" class="more-link">Continue Reading<i class="icon icon-long-arrow-right"></i></a>*@
+        </p>
+    </div>
+</article>

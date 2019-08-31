@@ -1,0 +1,17 @@
+﻿@model Blog.Domain.Concrete.Post
+
+<article class="entry style-grid style-hero hero-nav type-post col-xs-6 col-sm-6">
+
+    @*@Html.ActionLink(null, "Detail", "Post", new {postId=Model.PostId },null)*@
+    <a href="@Url.Action("Detail", "Post", new {postId=Model.GenerateSlug() },null)">
+   
+        <header class="entry-header">
+            <p class="small">Sonraki Makale</p>
+            <h3 class="entry-title">@Model.PostTitle</h3>
+        </header>
+        <figure class="entry-thumbnail">
+            <div class="overlay overlay-primary"></div>
+            <img alt="" width="480" height="280" src="@Url.Action("GetImage", "Post",new { Model.PostId })" />
+        </figure>
+    </a>
+</article>

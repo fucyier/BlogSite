@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Post>
+<div class="subnav-wrapper">
+    <ul class="subnav-entries">
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("Detail","Post", new { postId = @item.GenerateSlug() })">@item.PostTitle</a></li>
+        }
+    </ul>
+</div>

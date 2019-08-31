@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Tag>
+
+@foreach (var item in Model)
+{
+    @Html.ActionLink(item.TagText, "Index", "Nav", new { postTagId = item.TagId }, null)
+}
+

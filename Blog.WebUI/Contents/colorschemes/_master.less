@@ -1,0 +1,744 @@
+/**************************************************************************
+ *
+ * 1. Base 
+ * 2. Header
+ * 3. Header Navbar
+ *
+ * 4. Components
+ * 		4.1. Base
+ * 		4.2. Entry Styles
+ * 		4.3. Comments Area
+ * 		4.4. Lists
+ * 		4.5. Breadcrumb
+ * 		4.6. Pagination
+ * 		4.7. Sidenav
+ * 		4.8. Carousel
+ * 		4.9. Collapsible Panel
+ * 		4.10. Tab
+ * 		4.11. Buttons
+ * 		4.12. Progress Bar
+ * 		4.13. Overlay
+ * 		4.14. Table
+ * 		4.15. AD/banner
+ * 		4.16. Widget calendar
+ * 5. Footer
+ * 6. Responsive
+ */
+
+body {
+	background-color: @page_background;
+	color: @page_color;
+}
+
+a {
+	color: @link;
+	&:hover {
+		color: @link_hover;
+	}
+}
+
+.bg-page {
+	background-color: @page_background;
+}
+.bg-base {
+	background-color: @base;
+	& > .entries > .entry:not(.style-grid) .entry-title a {
+		color: @link_hover;
+	}
+}
+.bg-primary {
+	background-color: @primary;
+}
+.bg-focus {
+	background-color: @focus;
+}
+.bg-secodary {
+	background-color: @secodary_background;
+}
+.bg-bar {
+	background-color: @bar_background;
+}
+
+.section-no-margin-bottom,
+.section.carousel {
+	border-bottom: 4px solid @bar_background;
+}
+
+.form-control {
+	background-color: @page_background;
+	.border-color-hex-to-rgba(@page_color, 0.3);
+}
+
+/**************************************************************************
+ * 2. Header 
+ */
+
+.header-navbar .header-navbar-inner {
+	background-color: @bar_background;
+	.drop-shadow;
+
+	&:after {
+		border-left-color: @corner;
+	}
+
+	.btn-icon {
+		color: @focus;
+		background-color: @highlight;
+		&:hover,
+		&:focus,
+		&.focus {
+			color: @focus;
+			background-color: lighten(@highlight, 15%);
+		}
+	}
+}
+
+.header-navbar .navbar-brand {
+	.scrolled & {
+		border-right-color: lighten( @bar_background, 2%);
+	}
+	a {
+		background-color: @bar_brand_background;
+		.drop-shadow;
+		&:after {
+			border-right-color: lighten( @bar_background, 2%);
+		}
+
+		.scrolled & {
+			.box-shadow(none);
+			background-color: @bar_background;
+		}
+	}
+}
+
+.search-wrapper {
+	.search-wrapper-inner {
+		border-bottom: 1px dotted @primary;
+	}
+	input[type="text"] {
+		color: @bar_link;
+	}
+}
+
+
+/**************************************************************************
+ * 3. Header Navbar
+ */
+.header-navbar {
+	color: @bar_link;
+	.subnav-header {
+		color: @bar_link;
+	}
+
+	a {
+		color: @bar_link;
+	}
+	a:hover,
+	li.active > a,
+	li.active > a:hover {
+		color: @highlight;
+	}
+	
+	li {
+		a:hover,
+		li.active > a,
+		li.active > a:hover {
+			color: @highlight;
+			background-color: @bar_background;
+		}
+	}
+
+	.nav-pages {
+		a {
+			color: @link_secondary;
+			&:hover {
+				color: @link_secondary_hover;
+				background-color: transparent;
+			}
+		}
+	}
+}
+.nav.navbar-nav {
+	li {
+		.subnav-wrapper {
+			border-top-color: @highlight;
+			background-color: @focus;
+			.drop-shadow;
+		}
+	}
+	
+	& > li {
+		&.nav-all {
+			border-left-color: lighten(@bar_background,5%);
+			& > a {
+					color: @highlight;
+			}
+		}
+	}
+}
+.navbar-nav li .subnav-wrapper.subnav-tabbed {
+	background-color: @bar_background;
+}
+.header-navbar li .subnav-tabbed-tabs {
+	li.active > a {
+		background-color: @focus;
+	}
+}
+.subnav-tabbed-panels {
+	background-color: @focus;
+}
+
+.subnav-entries li {
+	border-top: 1px dashed @bar_background;
+	&:first-child {
+		border-top: none;
+	}
+}
+
+/**************************************************************************
+ * 4. Components
+ */
+
+/**************************************************************************
+ * 		4.1 Base
+ */
+
+.comments-count-balloon {
+	color: @page_color;
+	background-color: @base;
+	&:after {
+		border-left-color: @base;
+	}
+
+	&.bg-focus {
+		background-color: @focus;
+		color: @focus_text;
+		&:after {
+			border-left-color: @focus;
+		}
+	}
+
+	&.bg-primary {
+		background-color: @primary;
+		color: @primary_text;
+		&:after {
+			border-left-color: @primary;
+		}
+	}
+	em {
+		color: @page_color;
+	}
+}
+
+.ribbon {
+	& > a,
+	& > span,
+	& > .ribbon-inner {
+		.drop-shadow;
+		background-color: @primary;
+		color: @primary_text;
+	}
+
+	a {
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	& > span,
+	& > .ribbon-inner {
+		color: @primary_text;
+		a {
+			color: @primary_text;
+
+			&:hover {
+				.opacity(0.7);
+			}
+		}
+	}
+
+	&.ribbon-highlight {
+
+		& > a,
+		& > span,
+		& > .ribbon-inner  {
+			background-color: @highlight;
+			color: @highlight_text;
+		}
+
+		& > a:hover {
+			background-color: darken(@highlight, 5%);
+		}
+
+		& > span,
+		& > .ribbon-inner {
+			color: @highlight_text;
+			a {
+				color: @highlight_text;
+			}
+		}
+	}
+
+	&.ribbon-focus {
+
+		& > a,
+		& > span,
+		& > .ribbon-inner  {
+			background-color: @focus;
+			color: @focus_text;
+		}
+
+		& > a:hover {
+			background-color: darken(@focus, 5%);
+		}
+
+		& > span,
+		& > .ribbon-inner {
+			color: @focus_text;
+			a {
+				color: @focus_text;
+			}
+		}
+
+	}
+
+	&:after {
+		border-right-color: #111;
+	}
+}
+
+/**************************************************************************
+ * 		4.2 Entry Styles
+ */
+.style-score-widget {
+	.score {
+		&:after {
+			border-right-color: darken( @primary, 10% );
+		}
+	}
+	.score-bar {
+		background-color: darken( #fff, 13% );
+		border-bottom-color: darken( #fff, 23% );
+		i {
+			background-color: darken( @highlight, 10% );
+			border-bottom-color: darken( @highlight, 20% );
+		}
+	}
+}
+
+
+.style-review {
+	.entry-header p.small {
+		//color: @secondary;
+	}
+}
+.style-review-score {
+	background-color: @highlight;
+	color: @highlight_text;
+}
+.style-review-list {
+	.style-review-score {
+		background-color: @highlight;
+		color: @highlight_text;
+	}
+}
+.style-single {
+	h1, h2, h3, h4, h5 {
+		color: @link_hover;
+	}
+	h1, h2, h3 {
+		border-bottom-color: @border_color;
+	}
+}
+.after-entry hr { 
+	border-top: 1px dashed @border_color;
+}
+
+.page-header {
+	border-bottom-color: @border_color;
+	.page-title {
+		color: @link_hover;
+	}
+}
+.style-hero {
+	&.hero-nav .small {
+		color: @highlight;
+	}
+}
+.style-recent-list {
+	border-top-color: lighten(@primary, 50%);
+}
+
+.style-thumbnail-text {
+	border-top: 1px solid darken(@page_background,7%);
+	border-left: 1px solid darken(@page_background,7%);
+
+	&:first-child {
+		border-left: none;
+	}
+	a {
+		display: block;
+	}
+}
+
+
+.style-grid {
+
+	background-color: @primary;
+
+	.entry-header {
+		color: @light_color;
+
+		.entry-meta {
+			a {
+				color: @light_color;
+			}
+		}
+		.entry-title {
+			a {
+				color: @light_color;
+			}
+			a:hover {
+				color: @light_color;
+			}
+		}
+		p.small:first-child {
+			color: @highlight;
+			a {
+				color: @highlight;
+			}
+		}
+	}
+	.entry-thumbnail {
+		
+	}
+}
+
+
+/**************************************************************************
+ * 		4.3. Comments Area
+ */
+.comments-area {
+	padding-top: 20px;
+	
+	& > .comment-list {
+		border-top: 2px solid @border_color;
+	}
+	
+	.comment {
+		border-left-color: @border_color;
+	}
+}
+
+/**************************************************************************
+ * 		4.4. Lists
+ */
+
+.coverageList {
+	border: 5px solid @base;
+	.transparent-bg-hex(@base, 0.6 );
+}
+.tagcloud,
+.post-tags {
+	a {
+		color: @primary_text;
+		.transparent-bg-hex(@primary,0.6);
+		&:hover {
+			.transparent-bg-hex(@primary,1);
+		}
+	}
+}
+
+
+/**************************************************************************
+ *		4.5. Breadcrumb
+ */
+.breadcrumb {
+	
+	& > li.active {
+		color: inherit;
+	}
+
+	& > li + li:before {
+		color: inherit;
+		.opacity(0.6);
+	}
+}
+
+
+/**************************************************************************
+ * 		4.6. Pagination
+ */
+.pagination {
+	& > li {
+		& > span,
+		& > a,
+		& > span:hover {
+			background-color: transparent;
+			color: @link;
+		}
+		&.active > span,
+		&.active > span:hover,
+		& a:hover {
+			background-color: transparent;
+			color: @highlight;
+		}
+	}
+}
+
+
+/**************************************************************************
+ * 		4.7. Sidenav
+ */
+.sidenav .nav {
+	.transparent-bg-hex(@page_background,0.4);
+
+	& > li {
+		border-bottom: 1px solid @base; 
+		& > a {
+
+		}
+		& > a:hover, 
+		& > a:focus {
+			background-color: @page_background;
+		}
+	}
+}
+
+
+/**************************************************************************
+ * 		4.8. Carousel
+ */
+.section.carousel,
+.widget.carousel {
+	.carousel-control {
+		.transparent-bg(0.4);
+	}
+}
+
+
+ /**************************************************************************
+ * 		4.9. Collapsible Panel
+ */
+.panel,
+.panel-group .panel {
+	background-color: transparent;
+}
+.panel-primary {
+	& > .panel-heading {
+		background-color: transparent;
+		.border-radius(0px);
+		.panel-title a {
+			color: @focus_text;
+			background-color: @focus;
+		}
+	}
+	& > .panel-heading + .panel-collapse .panel-body {
+		border-top-color: @border_color;
+	}
+}
+ /**************************************************************************
+ * 		4.10. Tab
+ */
+.nav-tabs {
+	border-bottom-color: lighten(@focus, 5%);
+	background-color: @focus;
+	border-top: 4px solid @focus;
+	& > li {
+		& > a {
+			color: @focus_text;
+		}
+		& > a:hover,
+		& > a:focus {
+			border-bottom-color: transparent;
+			background-color: @base;
+			color: @page_color;
+		}
+		&.active {
+			& > a,
+			& > a:hover,
+			& > a:focus {
+				background-color: @base;
+				color: @page_color;
+			}
+		}
+	}
+}
+
+
+ /**************************************************************************
+ * 		4.11. Buttons
+ */
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+	.border-radius(0px);
+}
+
+.btn-default {
+	color: @page_color;
+	border-color: @page_color;
+	background-color: transparent;
+}
+.btn-default:hover,
+.btn-default:active,
+.btn-default.active {
+	color: @page_background;
+	background-color: @page_color;
+	border-color: @page_color;
+}
+
+.btn-warning {
+	color: @focus;
+	border-color: darken(@highlight, 3%);
+	background-color: @highlight;
+}
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning.active {
+	color: @focus;
+	background-color: darken(@highlight,5%);
+	border-color: darken(@highlight, 3%);
+}
+
+.btn-primary {
+	border-color: darken(@primary, 5%);
+	background-color: @primary;
+	color: @primary_text;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active {
+	color: @primary_text;
+	background-color: darken(@primary, 5%);
+	border-color: darken(@primary, 7%);
+}
+
+
+ /**************************************************************************
+ * 		4.12.  Progress Bar
+ */
+.progress-bar {
+	background-color: @progress_bar_bg;
+	color: @highlight_text;
+}
+
+
+ /**************************************************************************
+ * 		4.13. Overlay
+ */
+
+@hue: hue(@overlay_primary);
+@sat: saturation(@overlay_primary);
+@lig: lightness(@overlay_primary);
+
+.overlay {
+	&.overlay-primary {
+		.inner-shadow( 2px, 4px, 10px, 5px, 0.15);
+		background: -moz-linear-gradient(top,  hsla(@hue,@sat,@lig,0.6) 0%, hsla(@hue,@sat,@lig,0.8) 99%, hsla(@hue,@sat,@lig,0.8) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(@hue,@sat,@lig,0.6)), color-stop(99%,hsla(@hue,@sat,@lig,0.8)), color-stop(100%,hsla(@hue,@sat,@lig,0.8))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  hsla(@hue,@sat,@lig,0.6) 0%,hsla(@hue,@sat,@lig,0.8) 99%,hsla(@hue,@sat,@lig,0.8) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  hsla(@hue,@sat,@lig,0.6) 0%,hsla(@hue,@sat,@lig,0.8) 99%,hsla(@hue,@sat,@lig,0.8) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  hsla(@hue,@sat,@lig,0.6) 0%,hsla(@hue,@sat,@lig,0.8) 99%,hsla(@hue,@sat,@lig,0.8) 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  hsla(@hue,@sat,@lig,0.6) 0%,hsla(@hue,@sat,@lig,0.8) 99%,hsla(@hue,@sat,@lig,0.8) 100%); /* W3C */
+		filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='#99@{primary}', endColorstr='#cc@{primary}',GradientType=0 )"; /* IE6-9 */
+	}
+}
+ /**************************************************************************
+ * 		4.14. Table
+ */
+.table-bordered {
+	border: 1px solid @page_background;
+
+	& > thead > tr > th,
+	& > tbody > tr > th,
+	& > tfoot > tr > th,
+	& > thead > tr > td,
+	& > tbody > tr > td,
+	& > tfoot > tr > td {
+		border: 1px solid @page_background;
+	}
+
+	& > thead > tr > th,
+	& > thead > tr > td {
+		border-bottom-width: 2px;
+	}
+}
+
+.table-hover  {
+	& > tbody {
+		& > tr {
+			&:hover {
+				td,
+				th {
+					.transparent-bg-hex(@page_background, 0.7);
+				}
+			}
+		}
+	}
+}
+
+ /**************************************************************************
+ * 		4.15. Ad/ banner
+ */
+.ad-wrapper {
+	&.widget {
+		border-top: 2px solid @border_color;
+	}
+}
+
+/**************************************************************************
+ * 		4.16. Widget calendar
+ */
+.widget_calendar {
+	table {
+		td {
+			border-top: 1px solid @border_color;
+		}
+		#today {
+			background-color: @highlight;
+			color: @highlight_text;
+		}
+	}
+}
+
+ /**************************************************************************
+ * 5. Footer
+ */
+.footer-area {
+	color: @link_secondary;
+	a {
+		color: @link_secondary;
+		&:hover {
+			color: @link_secondary_hover;
+		}
+	}
+
+	.widget {
+		margin-bottom: 20px;
+		.widget-title {
+			color: @link_secondary;
+			.border-color-hex-to-rgba(@link_secondary, 0.3);
+		}
+	}
+
+	.footer-bottom {
+		.border-color-hex-to-rgba(@link_secondary, 0.3);
+	}
+}
+
+ /**************************************************************************
+ * 5. Responsive
+ */
+@media (max-width: 768px) {
+	.header-navbar,
+	body.scrolled .header-navbar {
+		border-right-color: lighten( @bar_background, 2%);
+		.navbar-brand a {
+			background-color: @bar_background;
+		}
+	}
+}

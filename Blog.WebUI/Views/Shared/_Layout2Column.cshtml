@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>   <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>      <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>      <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Yazılım Teknoloji c# asp.net .net</title>
+    <meta name="keywords" content="c#,asp.net,net,JavaScript,caner,demir,caner-demir,yazılım,teknoloji,sql,c,software,code,microsoft,sharp,jquery,software,technology">
+    <meta name="description" content="yazılım teknoloji c# net asp net software technology caner demir">
+    <!-- Mobile Devices Viewport Resset-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="~/Contents/css/bootstrap.min.css">
+
+    <link href="~/Contents/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Contents/img/favicon.ico">
+
+    <!--[if IE 8]>
+        <link rel="stylesheet" href="~/Contents/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link rel="stylesheet" href="~/Contents/prettyPhoto/css/prettyPhoto.css">
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Lato:300,400,700,400italic,700italic|Droid+Serif' rel='stylesheet' type='text/css'>
+    <!-- base layout styling -->
+    <link rel="stylesheet" href="~/Contents/base.css">
+    <!-- components styling -->
+
+    <link rel="stylesheet" href="~/Contents/components.css">
+    <script src="~/Scripts/jquery-2.2.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- template colorschemes -->
+    <link rel="stylesheet" href="~/Contents/colorschemes/light.css">
+    <script src="~/Scripts/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+</head>
+<body>
+    <h1 class="sr-only">Yazılım Teknoloji</h1>
+
+
+    <nav id="header" class="header-navbar" role="navigation">
+        <div class="header-navbar-inner container">
+
+            <div id="brand" class="navbar-brand">
+                <a href="@Url.Action("Index","Nav",null,null)" rel="bookmark">
+
+                    <!-- to disable lazy loading, remove data-src and data-src-retina -->
+                    <img src="~/Contents/img/light-logo.png" @*data-src="~/Contents/img/light-logo.png" data-src-retina="~/Contents/img/light-logo.png"*@ width="244" height="56" alt="">
+                    <!--fallback for no javascript browsers-->
+                    <noscript>
+                        <img src="~/Contents/img/light-logo.png" alt="">
+                    </noscript>
+                </a>
+            </div>
+            <ul class="nav nav-pages hidden-xs">
+              
+               <li> <a href="@Url.Action("Index","Post",new {Area="Admin" },null)" rel="bookmark">Giriş</a></li>
+            </ul>
+            <ul class="nav nav-icons">
+                <li>
+                    <a href="#" class="btn-icon" data-toggle=".header-navbar-inner" data-toggle-class="search-toggled-in">
+                        <span class="search-toggled-out-icon glyphicon glyphicon-search"></span>
+                        <span class="search-toggled-in-icon glyphicon glyphicon-remove"></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="search-wrapper js-stoppropagation">
+                <div class="search-wrapper-inner">
+                    <form>
+                        <input type="text" value="" placeholder="search ... ">
+                        <button class="btn-icon" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                    </form>
+                </div>
+            </div>
+            <ul class="nav navbar-nav">
+                @*<li class="nav-all pull-right full-subnav-wrapper active">
+                    <a href="#" data-toggle="li">
+                        <span class="text">All Categories</span>
+                        <span class="toggle glyphicon glyphicon-align-justify"></span>
+                    </a>
+                    <div class="row subnav-wrapper">
+
+                        <div class="col-md-2 col-sm-2 bg-bar">
+                            <strong class="subnav-header">Pages</strong>
+                            <ul class="subnav-full">
+                                <li><a href="#">Blog 3 Columns</a></li>
+                                <li class="active"><a href="#">Blog 2 Columns</a></li>
+                                <li><a href="#">Blog Grids</a></li>
+                                <li><a href="#">Reviews Archive</a></li>
+                                <li><a href="#">Single Blog</a></li>
+                                <li><a href="#">Single Blog (Full)</a></li>
+                                <li><a href="#">Components</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <strong class="subnav-header">Colorschemes</strong>
+                            <ul class="subnav-full">
+                                <li><a href="#">Coolorize</a></li>
+                                <li><a href="#">Dark</a></li>
+                                <li><a href="#">Light</a></li>
+                                <li><a href="#">Amet Commodo</a></li>
+                                <li><a href="#">Consectetur </a></li>
+                                <li><a href="#">Adipisicing</a></li>
+                                <li><a href="#">Duis aute </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <strong class="subnav-header">Banner Placements</strong>
+                            <ul class="subnav-full">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Single</a></li>
+                                <li><a href="#">Ipsum  Nisi </a></li>
+                                <li><a href="#">Dolor Aliquip</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <strong class="subnav-header">Category</strong>
+                            <ul class="subnav-full">
+                                <li><a href="#">Ipsum  Nisi </a></li>
+                                <li><a href="#">Dolor Aliquip</a></li>
+                                <li><a href="#">Amet Commodo</a></li>
+                                <li><a href="#">Consectetur </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <strong class="subnav-header">Category</strong>
+                            <ul class="subnav-full">
+                                <li><a href="#">Consectetur </a></li>
+                                <li><a href="#">Adipisicing</a></li>
+                                <li><a href="#">Ipsum  Nisi </a></li>
+                                <li><a href="#">Dolor Aliquip</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <strong class="subnav-header">Category</strong>
+                            <ul class="subnav-full">
+                                <li><a href="#">Ipsum  Nisi </a></li>
+                                <li><a href="#">Dolor Aliquip</a></li>
+                                <li><a href="#">Amet Commodo</a></li>
+                                <li><a href="#">Consectetur </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>*@
+
+                <li class="full-subnav-wrapper">
+                    <a href="#" data-toggle="li">.Net</a>
+                    @Html.Action("TopTabs", "Nav")
+
+                </li>
+                <li>
+                    <a href="#" data-toggle="li">Seçilmiş Yazılar</a>
+                    @Html.Action("FeaturedMenuTopics", "Nav")
+                    @*<div class="subnav-wrapper">
+                        <ul class="subnav-entries">
+                            <li><a href="#">Anonymous Method and Lambda Expression </a></li>
+                            <li><a href="#">Extension Methods in C# </a></li>
+                            <li><a href="#">Interfaces in C# </a></li>
+                            <li><a href="#">Abstraction in C# </a></li>
+                            <li><a href="#">What is Delegates and how to create it in C#</a></li>
+                            <li><a href="#">Importance of Equals Method in C#</a></li>
+                            <li><a href="#">Ref and Out Parameters in C#</a></li>
+                            <li><a href="#">Regular Expressions Usage in C#</a></li>
+                        </ul>
+                    </div>*@
+                </li>
+                @Html.Action("MenuTagTopics", "Nav")
+                @*<li><a href="#">C#</a></li>
+                <li><a href="#">Asp.Net MVC</a></li>
+                <li><a href="#">Entity Framework</a></li>
+                <li><a href="#">WCF</a></li>
+                <li><a href="#">Special Topics</a></li>*@
+
+            </ul>
+        </div>
+    </nav>
+    <div id="main" class="container">
+
+
+        @RenderSection("GetTopPosts", false)
+        @RenderSection("PreviousNextPosts", false)
+
+
+
+
+        <div id="content" class="content section row">
+            @* burdan cıkardık post ları *@
+            @RenderBody()
+            <div class="sidebar col-md-4 col-lg-4 col-xl-3">
+                @Html.Action("FeaturedPosts", "Nav")
+
+
+                @Html.Action("MostCommentedPosts", "Nav")
+
+
+                @Html.Action("MostViewedPosts", "Nav")
+                @Html.Action("LatestDiscussion", "Nav")
+
+                @*<aside class="widget">
+                    <h3 class="widget-title ribbon"><span>Special Coverage</span></h3>
+                    <ul class="entries coverageList aligncenter">
+                        <li><a href="#">#Code First Migrations</a></li>
+                        <li><a href="#">#.net 4.6</a></li>
+                        <li><a href="#">#ASP.NET 5</a></li>
+                        <li><a href="#">#SignalR</a></li>
+                        <li><a href="#">#Identity</a></li>
+                        <li><a href="#">#DbContext vs ObjectContext </a></li>
+                        <li><a href="#">#Visual Studio 2015</a></li>
+                        <li><a href="#">#AngularJs</a></li>
+
+                    </ul>
+                </aside>*@
+                <aside class="widget">
+                    <h3 class="widget-title ribbon"><span>Konu Etiketleri</span></h3>
+                    <div class="tagcloud">
+                        @Html.Action("GetAllTags", "Nav")
+
+                    </div>
+                </aside><!--/.widget-->
+            </div><!--/.sidebar col-md-4 col-lg-4 col-xl-3-->
+        </div><!--/#content-->
+
+
+    </div><!--#main.container-->
+    <footer id="footer" class="footer-area">
+        @*<div class="footer-top container">
+
+            <div class="row">
+                <div class="widget col-xs-12 col-sm-4">
+                    <h4 class="widget-title">Categories</h4>
+                    <ul class="entries links links-2-cols">
+                        <li><a href="#">Entertainment</a></li>
+                        <li><a href="#">Event</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Social Media</a></li>
+                        <li><a href="#">Tactical</a></li>
+                        <li><a href="reviews.html">Notebook</a></li>
+                        <li><a href="reviews.html">Smartphone</a></li>
+                        <li><a href="reviews.html">Tablet</a></li>
+                    </ul>
+                </div><!--/.col-3-->
+                <div class="clearfix visible-xs"></div>
+                <div class="widget col-xs-6 col-sm-2">
+                    <h4 class="widget-title">Information</h4>
+                    <ul class="entries links links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Advertise </a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div><!--/.col-3-->
+                <div class="widget col-xs-6 col-sm-2">
+                    <h4 class="widget-title">Follow Us</h4>
+                    <ul class="entries links">
+                        <li><a href="#"><i class="icon-facebook-sign icon-2x"></i> Facebook</a></li>
+                        <li><a href="#"><i class="icon-twitter-sign icon-2x"></i> Twitter</a></li>
+                        <li><a href="#"><i class="icon-google-plus-sign icon-2x"></i> Google Plus</a></li>
+                        <li><a href="#"><i class="icon-linkedin-sign icon-2x"></i> Linkedin</a></li>
+                    </ul>
+                </div><!--/.col-3-->
+                <div class="clearfix visible-xs"></div>
+                <div class="widget col-xs-12 col-sm-4">
+                    <h4 class="widget-title">Subscribe</h4>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="subscribeEmail" class="col-lg-2 control-label">EMAIL</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="subscribeEmail" placeholder="Your Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">RSS</label>
+                            <div class="col-lg-10">
+                                <p class="form-control-static">
+                                    <a href=""><i class="icon-rss-sign"></i> Posts</a> &nbsp; &nbsp;
+                                    <a href=""><i class="icon-rss-sign"></i> Yorumlar</a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div><!--/.col-3-->
+            </div><!--row.-->
+        </div>*@
+        <div class="footer-bottom">
+            <div class="container aligncenter">
+                <p>&copy;2019 by <a href="#">Caner Demir</a>. Tüm Hakları Saklıdır. <p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="~/Scripts/jquery-2.2.1.min.js"></script>
+
+    <!--
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../vendor/jquery-1.10.1.min.js"><\/script>')</script>
+    -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Contents/prettyPhoto/jquery.prettyPhoto.js"></script>
+
+    <script src="~/Scripts/jquery.unveil.min.js"></script>
+
+    <script src="~/Scripts/main.js"></script>
+
+</body>
+</html>

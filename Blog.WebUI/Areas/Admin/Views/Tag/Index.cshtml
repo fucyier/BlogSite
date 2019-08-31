@@ -1,0 +1,39 @@
+﻿@model  Blog.WebUI.Areas.Admin.Models.TagModels.TagsAdminListViewModel
+@using Blog.WebUI.HTMLHelpers;
+@{
+    ViewBag.Title = "Konu Yönetimi";
+}
+
+<h2>Konu Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Konu", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Konu Adı")
+        </th>
+      
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Tags)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TagText)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.TagId }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.TagId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.TagId })
+            </td>
+        </tr>
+    }
+
+</table>
+<ul class="pagination">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</ul>

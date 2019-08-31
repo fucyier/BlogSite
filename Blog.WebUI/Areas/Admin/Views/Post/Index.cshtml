@@ -1,0 +1,62 @@
+﻿@model Blog.WebUI.Areas.Admin.Models.PostModels.PostsAdminListViewModel
+@using Blog.WebUI.HTMLHelpers;
+@{
+    ViewBag.Title = "Makale Yönetimi";
+}
+<h2>Makaleler</h2>
+<p>
+    @Html.ActionLink("Yeni Makale", "Create", "Post", new { area = "Admin" }, null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Başlık")
+        </th>
+        <th>
+            @Html.DisplayName("Oluşturma Tarihi")
+        </th>
+        <th>
+            @Html.DisplayName("Yazar")
+        </th>
+        <th>
+            @Html.DisplayName("Konu")
+        </th>
+        <th>
+            @Html.DisplayName("Durum")
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model.Posts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.AuthorName)
+            </td>
+            <td>
+                @foreach (var tag in item.Tags)
+                {
+                    @Html.Label(tag.TagText);
+                    @:&nbsp
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.PostId }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.PostId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.PostId })
+            </td>
+        </tr>
+    }
+</table>
+<ul class="pagination">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</ul>

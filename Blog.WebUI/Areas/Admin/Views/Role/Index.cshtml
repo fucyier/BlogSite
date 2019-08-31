@@ -1,0 +1,46 @@
+﻿@model  Blog.WebUI.Areas.Admin.Models.RoleModels.RoleAdminListViewModel
+@using Blog.WebUI.HTMLHelpers;
+
+@{
+    ViewBag.Title = "Rol Yönetimi";
+}
+<h2>Rol Listesi</h2>
+<p>
+    @Html.ActionLink("Yeni Rol", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Rol Adı")
+        </th>
+
+        <th>Role Sahip Kullanıcılar</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Roles)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @foreach (var user in User.Identity.UserListwithRoleId(item.Id))
+                {
+                    @:user
+                    @:&nbsp;
+                }
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<ul class="pagination">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</ul>

@@ -1,0 +1,61 @@
+﻿@model  Blog.WebUI.Areas.Admin.Models.CommentModels.CommentAdminListViewModel
+@using Blog.WebUI.HTMLHelpers;
+@{
+    ViewBag.Title = "Yorum Yönetimi";
+}
+
+<h2>Yorum Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Yorum", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Yorum Yapan")
+        </th>
+        <th>
+            @Html.DisplayName("E-Posta")
+        </th>
+        <th>
+            @Html.DisplayName("Yorum")
+        </th>
+        <th>
+            @Html.DisplayName("Yorum Tarihi")
+        </th>
+        <th>
+            @Html.DisplayName("Durumu")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Comments)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommenterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommenterMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.CommentId }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.CommentId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.CommentId })
+            </td>
+        </tr>
+    }
+
+</table>
+<ul class="pagination">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</ul>

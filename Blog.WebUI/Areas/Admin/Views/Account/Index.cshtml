@@ -1,0 +1,66 @@
+﻿
+@model  Blog.WebUI.Areas.Admin.Models.AccountModels.AccountsAdminListViewModel
+@using Blog.WebUI.HTMLHelpers;
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Kullanıcı Listesi</h2>
+@if (User.Identity.IsAdmin())
+{
+    <p>
+        @Html.ActionLink("Yeni Kullanıcı", "Register")
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Kullanıcı Adı")
+        </th>
+        <th>
+            @Html.DisplayName("Roller")
+        </th>
+        <th>
+            @Html.DisplayName("Telefon")
+        </th>
+        <th>
+            @Html.DisplayName("E-Posta")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @foreach (var role in User.Identity.GetRoleName())
+                {
+                  @role
+                  @:&nbsp;
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                @Html.ActionLink("Bilgi Güncelle", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Şifre İşlemleri", "Manage", new { id = item.Id }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+<ul class="pagination">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</ul>

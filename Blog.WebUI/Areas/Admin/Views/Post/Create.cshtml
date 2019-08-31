@@ -1,0 +1,115 @@
+﻿@model Blog.Domain.Concrete.Post
+@{
+    ViewBag.Title = "Makale Yönetimi";
+}
+
+<h2>Yeni Makale</h2>
+@using (Html.BeginForm("Create", "Post", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostShortDetail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostShortDetail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostShortDetail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PostDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+       
+        <div class="form-group">
+           
+            @Html.Label("Resim", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <a class='btn' href='javascript:;'>
+                    Dosya Seç...
+                    <input type="file" name="image" id="image" size="40"
+                           style="position:absolute;z-index:2;top:0;
+                            left:0;filter: alpha(opacity=0); opacity:0;
+                            background-color:transparent;color:transparent;"
+                           onchange='$("#upload-file-info").html($(this).val());'>
+                </a>
+                <span class='label label-info' id="upload-file-info"></span>
+                </div>
+            </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.PostStatus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PostStatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsFeatured, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.IsFeatured, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IsFeatured, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AuthorId, "Yazar", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("AuthorID", (IEnumerable<SelectListItem>)ViewBag.AuthorID, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AuthorId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Konu", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-offset-2 col-md-10">
+                <table>
+                    <tr>
+                        @{
+                            int cnt = 0;
+                            List<Blog.WebUI.Areas.Admin.Models.PostModels.AssignedTagData> tags = ViewBag.Tags;
+
+                            foreach (var tag in tags)
+                            {
+                                if (cnt++ % 3 == 0)
+                                {
+                                    @:</tr><tr>
+        }
+                                @:<td>
+                                    <input type="checkbox"
+                                           name="selectedTags"
+                                           value="@tag.TagID"
+                                           @(Html.Raw(tag.Assigned ? "checked=\"checked\"" : "")) />
+                                        @tag.TagName
+                                @:&nbsp;
+                                        @:</td> 
+                            }
+                            @:</tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PostDetail.PostText, new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @*@Html.TextAreaFor(model => model.PostDetail.PostText,  new { @id = "PostText", @class = "form-control" } )*@
+                    @Html.TextAreaFor(model => model.PostDetail.PostText, new { @id = "FullDescription", @class = "form-control", @rows = "50" })
+                    @Html.ValidationMessageFor(model => model.PostDetail.PostText, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Kaydet" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+                            }

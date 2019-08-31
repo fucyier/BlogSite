@@ -1,0 +1,82 @@
+﻿@model Blog.Domain.Concrete.Author
+
+@{
+    ViewBag.Title = "Yazar Yönetimi";
+}
+
+<h2>Yazar Detay</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           
+        </dt>
+        <dd>
+            @if (Model.AuthorPhoto == null)
+            {
+                <div>Fotoğraf Yok</div>
+            }
+            else
+            {
+                <img class="img-thumbnail" width="150" height="150"
+                     src="@Url.Action("GetImage", "Authors",
+                        new { Model.AuthorId })" />
+            }
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorCreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorCreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorStatus)
+        </dd>
+        <dt>
+           
+        </dt>
+
+        <dd>
+           @if (Model.AuthorStatus==false)
+           {
+               @:Yazarlık için Yönetici Onayı Bekliyor...
+           }
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.AuthorId }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

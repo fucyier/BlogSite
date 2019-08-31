@@ -1,0 +1,97 @@
+﻿@model Blog.Domain.Concrete.Author
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Yazar Sil</h2>
+@using (Html.BeginForm())
+{@Html.AntiForgeryToken()
+
+    <h3>Silmek istediğinizden emin misiniz?</h3>
+    <div>
+      
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AuthorId)
+        <dl class="dl-horizontal">
+            <dt>
+              
+            </dt>
+
+            <dd>
+                @if (Model.AuthorPhoto == null)
+                {
+                    <div>No Image</div>
+                }
+                else
+                {
+                    <img class="img-thumbnail" width="150" height="150"
+                         src="@Url.Action("GetImage", "Authors",
+                        new { Model.AuthorId })" />
+                }
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AuthorName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorMail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AuthorMail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorCreationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AuthorCreationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorInfo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AuthorInfo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AuthorStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AuthorStatus)
+            </dd>
+            <dt>
+
+            </dt>
+
+            <dd>
+                @if (Model.AuthorStatus == false)
+                {
+                    @:Yazarlık için Yönetici Onayı Bekliyor...
+           }
+            </dd>
+        </dl>
+
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> 
+
+        </div>
+    </div>
+}
+   
+<br />
+    <div>
+        @Html.ActionLink("Listeye Dön", "Index")
+    </div>

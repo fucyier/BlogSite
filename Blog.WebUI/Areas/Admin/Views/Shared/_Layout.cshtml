@@ -1,0 +1,119 @@
+﻿@using Blog.WebUI.Infrastructure;
+@using Microsoft.AspNet.Identity;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Yöntim Paneli</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script>
+        CKEDITOR_BASEPATH = '../../../Contents/Themes/ckeditor/';
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            /* Equal to height of footer */
+            /* But also accounting for potential margin-bottom of last child */
+            margin-bottom: -5px;
+        }
+
+        .footer2,
+        .push {
+            height: 5px;
+             text-align: center;
+        }
+                 
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (User.Identity.IsAdmin())
+                {
+                @Html.ActionLink("Anasayfa", "Index", "Nav", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Makale Yönetimi", "Index", "Post", new { area = "Admin" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Yazar Yönetimi", "Index", "Authors", new { area = "Admin" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Konu Yönetimi", "Index", "Tag", new { area = "Admin" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Yorum Yönetimi", "Index", "Comment", new { area = "Admin" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Kullanıcı Yönetimi", "Index", "Account", new { area = "Admin" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Rol Yönetimi", "Index", "Role", new { area = "Admin" }, new { @class = "navbar-brand" })
+                }
+                else if (User.Identity.IsAuthor())
+                {
+                @Html.ActionLink("Anasayfa", "Index", "Nav", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Makale Yönetimi", "Index", "Post", new { area = "Admin" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Yazar Yönetimi", "Index", "Authors", new { area = "Admin" }, new { @class = "navbar-brand" })
+
+                @Html.ActionLink("Kullanıcı Yönetimi", "Index", "Account", new { area = "Admin" }, new { @class = "navbar-brand" })
+
+                }
+                else
+                {
+                @Html.ActionLink("Anasayfa", "Index", "Nav", new { area = "" }, new { @class = "navbar-brand" })
+
+                @Html.ActionLink("Yazar Yönetimi", "Index", "Authors", new { area = "Admin" }, new { @class = "navbar-brand" })
+
+                @Html.ActionLink("Kullanıcı Yönetimi", "Index", "Account", new { area = "Admin" }, new { @class = "navbar-brand" })
+
+                }
+            </div>
+            <div class="pull-right">
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        @Html.ActionLink(User.Identity.GetFullName(), "Edit", "Account", new { area = "Admin", id=User.Identity.GetUserId() }, new { @class = "navbar-brand" })
+                        }
+                        else
+                        {
+
+                        }
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        @Html.ActionLink("Çıkış", "LogOff", "Account", new { area = "Admin" }, new { @class = "navbar-brand" })
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content wrapper">
+        @RenderBody()
+        <hr />
+        <div class="push"></div>
+       
+    </div>
+    <footer class="footer2">
+        <p class="aligncenter">&copy; @DateTime.Now.Year - Caner Demir -  Yazılım Bilgi Paylaşım Sistemi</p>
+    </footer>
+    <script src="~/Scripts/jquery-2.2.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Contents/Themes/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        CKEDITOR.replace("FullDescription");
+    </script>
+
+
+
+</body>
+</html>

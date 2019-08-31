@@ -1,0 +1,50 @@
+﻿@model Blog.WebUI.Models.PostsListViewModel
+@using Blog.WebUI.HTMLHelpers;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section GetTopPosts
+{
+    @Html.Action("GetTopPosts", "Nav")
+}
+@*@section FeaturedPosts
+{
+    @Html.Action("GetFeaturedPosts","Nav")
+}*@
+<div class="col-md-8 bg-base col-lg-8 col-xl-9">
+    <div class="ribbon ribbon-highlight">
+        <ol class="breadcrumb ribbon-inner">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Articles</a></li>
+            <li class="active">
+                @if (Model.TagId!=null)
+                {
+                    @Html.ActionLink(Model.TagText, "Index", "Nav", new {postTagId=Model.TagId },null)
+                }
+                else
+                {
+                   @Html.ActionLink("All", "Index", "Nav")
+                }
+            </li>
+        </ol>
+    </div>
+
+    <div class="entries">
+        @foreach (var p in Model.Posts)
+        {
+            @Html.Partial("PostSummary", p);
+        }
+
+   
+
+    </div>
+
+    <ul class="pagination">
+     
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { postTagId = Model.TagId, page = x }))
+    </ul>
+</div>
+
+

@@ -1,0 +1,70 @@
+﻿@using Blog.WebUI.HTMLHelpers;
+@model IEnumerable<Blog.Domain.Concrete.Comment>
+@{
+    AjaxOptions ajaxPersonOpts = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "comments",
+        Url = Url.Action("PostComments"),
+        //OnSuccess = "$('#respond').hide();$('#info').show();",
+        //OnFailure= "$('#respond').show();$('#info').hide();"
+
+    };
+}
+<div id="comments" class="comments-area indented">
+    <h4 class="comments-title">Yorumlar</h4>
+    <ol class="media-list comment-list">
+        @if (Model.Count() > 0)
+        {
+            @Html.CommentTree(Model)
+
+        }
+        else
+        {
+            <li class="media comment">
+                <div class="media-body">
+                    <p>Henüz Yorum Yapılmadı.</p>
+                </div>
+            </li>
+        }
+
+    </ol>
+
+    @using (Ajax.BeginForm(ajaxPersonOpts))
+    {
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div id="info" class="text-danger col-md-offset-1" style="display:none">
+            <br />
+            Thanks for the reply.
+        </div>
+        <div id="respond" class="comments-respond  row">
+            <h3 id="reply-title" class="comment-reply-title">Yorum Bırak</h3>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label class="sr-only">Name</label>
+                <textarea class="form-control" id="commenterName" name="commenterName" rows="1" placeholder="Ad Soyad"></textarea>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <label class="sr-only">Email</label>
+
+                <input class="form-control" id="commenterMail" name="commenterMail" type="text" placeholder="E-Posta">
+            </div>
+            <br />
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                <label class="sr-only" for="commentMessage">Message</label>
+
+                <textarea class="form-control" id="commentMessage" name="commentMessage" rows="8" placeholder="Mesaj İçerik"></textarea>
+            </div>
+
+
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                <button class="btn btn-primary" name="submit" id="submit">Gönder</button>
+            </div>
+        </div>
+
+
+    }
+
+</div>
+

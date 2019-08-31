@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Comment>
+
+<aside class="widget">
+    <h3 class="widget-title ribbon"><span>Son Yorumlar</span></h3>
+    <ul class="entries">
+
+        @foreach (var item in Model)
+        {
+            <li class="entry style-recent-list type-post">
+                <span class="comments-count-balloon">@item.Post.ViewCount</span>
+                <a href="@Url.Action("Detail","Post", new { postId = @item.Post.GenerateSlug() })" rel="bookmark" class="entry-title">@string.Concat(item.Message, "...")</a>
+              
+            </li>
+        }
+
+    </ul>
+</aside>

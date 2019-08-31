@@ -1,0 +1,35 @@
+﻿@model Blog.WebUI.Areas.Admin.Models.RoleModels.RoleViewModel
+
+@{
+    ViewBag.Title = "Rol Yönetimi";
+}
+
+<h2>Rol Silme</h2>
+
+<h3>Rolü Silmek istediğinizden emin misiniz?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" });
+        @Html.HiddenFor(model => model.RoleId)
+        @Html.HiddenFor(model => model.RoleName)
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

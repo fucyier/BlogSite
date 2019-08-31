@@ -1,0 +1,1565 @@
+@import "libs.less";
+
+
+@content_indent: 0px;
+
+/**************************************************************************
+ *
+ * 1. Base Components
+ * 
+ * 2. Entry Styles
+ * 		2.1. Single Entry
+ * 		2.2. Style Grid
+ *   	2.3. Style Hero
+ *   	2.4. Style Large
+ *   	2.5. Style Media
+ *   	2.6. Style Media list
+ *   	2.7. Style Review
+ *   	2.8. Style Review Score
+ *   	2.9. Style Review List
+ *   	2.10. Style Thumbnail
+ *   	2.11. Style Thumbnail Text
+ *   	2.12. Style Recent List
+ *   	2.13. Style Score Widget
+ *   	
+ * 3. Comments Area
+ * 4. Gallery
+ * 5. Lists
+ * 6. BreadCrumb
+ * 7. Pagination
+ * 8. Sidenav
+ * 9. Carousel
+ * 10. Widget calendar
+ * 11. Collapsible panel
+ * 12. Tabs
+ * 13. Ad/Banner
+ * 14. Prettyphoto
+ * 15. Responsive
+ */
+
+/**************************************************************************
+ * 1. Base 
+ */
+.entries {
+	.clearfix;
+}
+.entry {
+}
+.entry-header {
+	margin-bottom: 20px;
+	.small {
+		font-size: 11px;
+		text-transform: uppercase;
+		&:first-child {
+			margin-bottom: 2px;
+		}
+	}
+	.entry-meta.pull-right {
+		margin-top: 5px;
+		margin-right: 20px;
+		margin-left: 20px;
+		.opacity(1);
+	}
+}
+.entry-header-overlay {
+	position: relative;
+	margin-bottom: 10px;
+	.entry-header {
+		position: absolute;
+		z-index: 4;
+		bottom: 0px;
+		left: -15px;
+		right: -15px;
+		margin-bottom: 0px;
+		padding: 8px 15px 5px;
+	}
+}
+.entry-title {
+	font-weight: 300;
+	margin: 0px 0px 20px;
+	a {
+
+	}
+	.entry-header & {
+		margin-bottom: 0px;
+	}
+}
+.entry-meta {
+	font-size: 12px;
+	margin-bottom: 10px;
+	.opacity(0.6);
+
+	.entry-header & {
+		margin-bottom: 0px;
+	}
+
+	.entry-header &:first-child {
+		margin-bottom: 5px;
+	}
+}
+
+.entry-thumbnail {
+	overflow: hidden;
+	position: relative;
+	// margin-left: -15px;
+	// margin-right: -15px;
+
+	img {
+		min-width: 100%;
+		width: auto;
+		height: auto;
+	}
+}
+.more-link {
+	display: block;
+	margin-top: 16px;
+	white-space: nowrap;
+	i {
+		.inline-block;
+		margin-left: 3px;
+	}
+}
+
+.more-wrapper {
+	padding-top: 15px;
+	margin-bottom: 20px;
+	.btn {
+		text-transform: uppercase;
+		display: block;
+		text-align: center;
+	}
+}
+
+.overlay {
+	position: absolute;
+	z-index: 1;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+
+	&.overlay-primary {
+
+	}
+	[data-rel^="prettyPhoto"] & {
+		bottom: 20px;
+	}
+
+	.icon {
+		@dimention: 40px;
+		height: @dimention;
+		width: @dimention;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -10px;
+		margin-top: -10px;
+		font-size: @dimention;
+		line-height: @dimention;
+		color: #fff;
+		.opacity(0.2);
+	}
+}
+
+.indented {
+	margin-left: @content_indent;
+}
+blockquote {
+	padding: 0px;
+	position: relative;
+	font-weight: normal;
+	border: none;
+	.opacity(0.7);
+
+	p {
+		font-family: 'Droid Serif', sans-serif;
+		font-size: 20px;
+		line-height: 30px;
+	}
+	small {
+		font-family: 'Droid Sans', sans-serif;
+		font-size: 13px;
+	}
+
+	&.pulled-left {
+		float: left;
+		width: 250px;
+		margin-left: -(@content_indent - 30px);
+		margin-right: 35px;
+		text-align: right;
+	}
+}
+
+.thumbnail {
+	margin-bottom: 20px;
+}
+
+.image {
+	position: relative;
+	img {
+		height: auto;
+	}
+}
+
+.form-control {
+	.border-radius(0px);
+}
+.form-horizontal {
+	label.control-label {
+		text-align: left;
+		font-weight: normal;
+	}
+}
+
+.table {
+	margin-bottom: 20px;
+}
+
+.icon-2x {
+	position: relative;
+	top: 3px;
+	margin-right: 7px;
+}
+
+ul.entries {
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+
+.video-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.video-container iframe,  
+.video-container object,  
+.video-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+.comments-count-balloon {
+	position: relative;
+	padding: 5px 10px;
+	position: relative;
+	margin-bottom: 35px;
+	font-size: 18px;
+	line-height: 28px;	
+	min-width: 61px;
+	.inline-block;
+	text-align: center;
+	
+	.page-header & {
+		font-size: 25px;
+		line-height: 35px;	
+	}
+
+	&:after {
+		bottom: -6px;
+		right: 5px;
+		position: absolute;
+		content: '';
+		width: 0; 
+		height: 0; 
+		border-top: 0px solid transparent;
+		border-bottom: 6px solid transparent; 
+		border-left: 6px solid #333;
+	}
+
+	em,
+	.page-header & em {
+		position: relative;
+		font-style: normal;
+		font-size: 11px;
+		text-transform: uppercase;
+		position: absolute;
+		top: 100%;
+		left: 0px;
+	}
+}
+
+.lead {
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 30px;
+	font-family: 'Droid Serif', sans-serif;
+}
+
+.ribbon {
+	position: relative;
+	margin: 0 -15px 0 -20px;
+	z-index: 20;
+	font-family: 'Lato', sans-serif;
+	text-transform: uppercase;
+	line-height: 38px;
+
+	& > span,
+	& > a,
+	& > .ribbon-inner {
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding: 0 20px;
+		.ellipsis;
+	}
+
+	&.ribbon-pulled {
+		& > span,
+		& > a,
+		& > .ribbon-inner {
+			width: auto;
+			float: left;
+		}
+	}
+
+	&.ribbon-small {
+		font-size: 12px;
+		line-height: 30px;
+		height: 30px;
+	}
+
+	.content .md-pull-right & {
+		z-index: 22;
+	}
+
+	.content .sidebar & {
+		z-index: 24;
+	}
+
+	.pull-right,
+	.pull-left {
+		font-size: 11px;
+		font-weight: bold;
+	}
+	
+
+	&:after {
+		top: 100%;
+		left: 0px;
+		position: absolute;
+		content: '';
+		width: 0; 
+		height: 0; 
+		border-top: 0px solid transparent;
+		border-bottom: 5px solid transparent; 
+		border-right: 5px solid #333;
+	}
+}
+.progress {
+	.border-radius(0px);
+}
+.progress-bar {
+	.box-shadow( inset 0 -2px 0 rgba(0, 0, 0, 0.15) );
+	text-align: left;
+	line-height: 20px;
+	span {
+		.inline-block;
+		padding-left: 5px;
+
+	}
+}
+
+/**************************************************************************
+ * 2. Entry Style
+ */
+
+/**************************************************************************
+ * 		2.1. Style Single Entry
+ */
+.style-single {
+	position: relative;
+	margin-bottom: 30px;
+
+	.entry-thumbnail {
+		margin-left: -15px;
+		// margin-right: -15px;
+		margin-bottom: 20px;
+		img {
+			margin-bottom: 0px;
+		}
+	}
+	.entry-title {
+		font-size: 35px;
+		line-height: 40px;
+		margin-bottom: 5px;
+	}
+	.entry-meta {
+		font-size: 14px;
+		margin-bottom: 20px;
+	}
+	
+	p,
+	blockquote,
+	.image,
+	ul,
+	ol,
+	.entries,
+	img {
+		margin-bottom: 20px;
+	}
+
+	& > .entry-content {
+		margin-bottom: 30px;
+	}
+	
+
+	h1, h2, h3 {
+		margin-top: 30px;
+		padding-bottom: 10px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid #ccc;
+		font-weight: 300;
+		&:first-child {
+			margin-top: 5px;
+		}
+	}
+}
+
+.style-single-full {
+	
+}
+
+.widget-author {
+	font-size: 13px;
+	line-height: 23px;
+	overflow: initial;
+	position: relative;
+
+	.entry-author-avatar {
+		width: 90px;
+		height: 90px;
+		overflow: hidden;
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+.image.image-full,
+.style-single .flushed-left{
+	position: relative;
+	margin-right: -15px;
+	margin-left: -(@content_indent + 15);
+
+	img {
+		width: 100%;
+	}
+}
+.style-single .flushed-left {
+	padding: 20px 15px 0px 15px;
+	margin-bottom: 25px;
+}
+
+/**************************************************************************
+ * 		2.2. Style Grid
+ */
+
+.style-grid {
+	position: relative;
+	z-index: 1;
+
+	.entry-header {
+		clear: both;
+		position: relative;
+		margin-bottom: 0px;
+		padding-right: 15px;
+		padding-top: 15px;
+	}
+
+	.ribbon {
+		top: 10px;
+		margin-bottom: 5px;
+	}
+	.entry-thumbnail {
+		position: absolute;
+		z-index: -1;
+		top: 0px;
+		left: -15px;
+		right: -15px;
+		height: 100%;
+
+		img {
+			width: 120%;
+			max-width: 120%;
+			margin-left: -10%;
+			.transition(all 0.2s linear);
+		}
+	}
+
+	&:hover .entry-thumbnail img{
+		.transform(scale(1.1,1.1));
+	}
+
+	.entry-meta {
+		margin-bottom: 0px;
+	}
+
+	.entry-title {
+		font-size: 18px;
+		line-height: 23px;
+	}
+
+}
+.row > .style-grid {
+	.entry-thumbnail {
+		width: 100%;
+		left: 0px;
+		right: 0px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+}
+/**************************************************************************
+ * 		2.3. Style Hero
+ */
+.style-hero {
+	.entry-title {
+		margin-bottom: 8px;
+		a {
+			display: block;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+	.entry-thumbnail {
+	}
+
+	&.hero-nav {
+		height: 145px;
+		.entry-title {
+			font-size: 20px;
+			line-height: 25px;
+		}
+
+		a {
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+
+/**************************************************************************
+ * 		2.4. Style Large
+ */
+.style-large {
+	
+	margin-bottom: 30px;
+
+	.entry-thumbnail {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	.entry-header {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	.entry-title {
+		font-size: 26px;
+		line-height: 34px;
+	}
+	.entry-thumbnail {
+		height: 320px;
+	}
+
+}
+
+/**************************************************************************
+ * 		2.5. Style Media
+ */
+.style-media {
+	position: relative;
+	overflow: inherit;
+	margin-bottom: 30px;
+	.clearfix;
+
+	&:first-child {
+		margin-top: 0px;
+	}
+
+	.media-object {
+		width: 200px;
+		height: 140px;
+		position: relative;
+	}
+
+	.entry-title {
+		font-size: 20px;
+		line-height: 24px;
+		margin-bottom: 3px;
+	}
+
+	.entry-header {
+		margin-bottom: 10px;
+	}
+
+	& > .pull-left{
+		margin-right: 20px;
+	}
+
+	.media-body {
+		padding-right: 10px;
+		font-size: 13px;
+		line-height: 20px;
+	}
+}
+
+/**************************************************************************
+ * 		2.6. Style Media List
+ */
+.style-media-list {
+	margin-top: 15px;
+
+	&:first-child {
+		margin-top: 15px;
+	}
+
+	.media-object {
+		width: 80px;
+		height: 80px;
+	}
+	.entry-title {
+		font-size: 14px;
+		line-height: 20px;
+		margin-bottom: 3px;
+		overflow: hidden;
+		font-weight: normal;
+		font-family: 'Droid Sans', sans-serif;
+	}
+	.entry-meta {
+		margin-bottom: 0px;
+		line-height: 18px;
+	}
+}
+
+/**************************************************************************
+ * 		2.7. Style Review
+ */
+.style-review {
+	&.style-grid {
+		height: 145px;
+
+		.entry-header {
+			width: 100%;
+			padding-top: 70px;
+		}
+		.entry-title {
+			.ellipsis;
+		}
+		.small {
+			line-height: 16px;
+			font-style: italic;
+			.opacity(0.6);
+			text-transform: none;
+			font-size: 13px;
+		}
+
+		.style-review-score {
+			left: 0px;
+		}
+	}
+}
+
+/**************************************************************************
+ * 		2.8. Style Review Score
+ */
+.style-review-score {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	z-index: 2;
+	padding: 0px;
+	width: 50px;
+	text-align: center;
+	font-size: 30px;
+	line-height: 40px;
+}
+
+/**************************************************************************
+ * 		2.9. Style Review List
+ */
+.style-review-list {
+	.entry-title {
+		font-size: 15px;
+		margin-bottom: 4px;
+	}
+	.small {
+		font-size: 13px;
+		line-height: 20px;
+		font-style: italic;
+		margin-bottom: 3px;
+		line-height: 18px;
+		font-weight: normal;
+		font-family: 'Droid Sans', sans-serif;
+		.opacity(0.6);
+	}
+	.style-review-score {
+		font-family: 'Lato', sans-serif;
+		font-weight: 300;
+		position: absolute;
+		top: 5px;
+		left: 20px;
+		z-index: 2;
+		padding: 0px;
+		width: 30px;
+		text-align: center;
+		font-size: 14px;
+		line-height: 22px;
+	}
+}
+
+/**************************************************************************
+ * 		2.10. Style Thumbnail
+ */
+.style-thumbnail {
+	position: relative;
+	.entry-thumbnail {
+		margin-right: 0px;
+		margin-left: 0px;
+		margin-bottom: 10px;
+
+		.navbar-nav & {
+			height: 125px;
+		}
+	}
+	.entry-title {
+		font-size: 14px;
+		line-height: 20px;
+	}
+}
+
+/**************************************************************************
+ * 		2.11. Style Thumbnail Text
+ */
+.style-thumbnail-text {
+	overflow: hidden;
+	padding: 0px 15px;
+	.entry-meta {
+		padding-top: 20px;
+		margin-bottom: 7px;
+		text-transform: uppercase;
+		line-height: 12px;
+	}
+	.entry-title {
+		font-size: 14px;
+		line-height: 19px;
+		margin-bottom: 15px;
+		font-weight: normal;
+	}
+}
+
+/**************************************************************************
+ * 		2.12. Style Recent List
+ */
+.style-recent-list {
+	font-size: 13px;
+	line-height: 20px;
+	margin-top: 10px;
+	padding-top: 10px;
+	.clearfix;
+	border-top: 1px dashed #ccc;
+
+	&:first-child {
+		border-top: none;
+		padding-top: 5px;
+	}
+
+	.comments-count-balloon {
+		margin-top: -3px;
+		float: right;
+		margin-left: 15px;
+		font-size: 13px;
+		line-height: 23px;
+		padding: 2px 6px;
+		min-width: inherit;
+		margin-bottom: 0px;
+	}
+}
+
+/**************************************************************************
+ * 		2.13. Style Score Widget
+ */
+.style-score-widget {
+	position: relative;
+	margin-bottom: 15px;
+	.score-label {
+		display: block;
+		margin-bottom: 3px;
+		font-size: 14px;
+		line-height: 18px;
+		.ellipsis;
+	}
+	.progress {
+		.opacity(0.6);
+		margin-bottom: 0px;
+	}
+	&:hover .progress {
+		.opacity(1);
+	}
+	.entries &:first-child {
+		margin-top: 15px;
+	}
+
+	.score-value {
+		float: right;
+		margin-left: 20px;
+		font-size: 40px;
+		line-height: 40px;
+		font-weight: 300;
+		font-family: 'Lato', sans-serif;
+	}
+}
+
+/**************************************************************************
+ * 3. Comments Area
+ */
+.comments-area {
+
+	.comments-title {
+		font-size: 26px;
+		line-height: 36px;
+		font-weight: 300;
+		font-family: 'Lato', sans-serif;
+		margin-bottom: 15px;
+	}
+
+	& > .comment-list {
+		padding-top: 25px;
+	}
+
+	.media {
+		overflow: initial;
+		margin-top: 0px;
+	}
+	.comment {
+		position: relative;
+		margin-left: 37px;
+		border-left: 1px dashed #ccc;
+
+		&:last-child,
+		&.last {
+			border-left: none;
+		}
+
+		.media-list {
+			margin-left: 47px;	
+		}
+
+		.media-body {
+			padding-bottom: 20px;
+		}
+
+		.comment {
+			padding-top: 0px;
+		}
+	}
+
+	.media-object {
+		margin-left: -37px;
+	}
+
+	.author-vcard {
+		font-weight: 300;
+		font-family: 'Lato', sans-serif;
+		font-size: 17px;
+		line-height: 27px;
+		.comment-meta {
+			font-size: 12px;
+			font-family: 'Droid sans', sans-serif;
+			font-style: italic;
+			.opacity(0.7);
+		}
+	}
+
+	.comment-reply-title {
+		font-weight: 300;
+		font-family: 'Lato', sans-serif;
+		font-size: 22px;
+		line-height: 32px;
+	}
+
+	.comments-respond {
+		.form-inline .form-group {
+			margin-bottom: 20px;
+		}
+
+		input,
+		textarea {
+			.border-radius(0px);
+		}
+	}
+}
+
+/**************************************************************************
+ * 4. Gallery
+ */
+.gallery {
+	.gallery-title {
+		margin: 0px 0px 20px;
+		padding: 0px;
+		font-weight: 300;
+		font-family: 'Lato', sans-serif;
+	}
+
+	.thumbnail {
+		.border-radius(0px);
+		img {
+			margin-bottom: 0px;
+		}
+	}
+}
+
+/**************************************************************************
+ * 5. Lists
+ */
+ul.coverageList {
+	margin: 20px auto;
+	padding: 10px;
+	line-height: 30px;
+	max-width: 320px;
+}
+.tagcloud,
+.post-tags  {
+	a {
+		font-size: 12px !important;
+		margin-right: 3px;
+		margin-bottom: 3px;
+		line-height: 15px;
+		text-decoration: none;
+		padding: 3px 5px;
+		.border-radius(2px);
+		.inline-block;
+		&:before {
+			content: '#';
+		}
+	}
+}
+.tagcloud {
+	padding-top: 15px;
+}
+.links {
+	position: relative;
+	li {
+		margin-bottom: 6px;
+	}
+	&.links-2-cols {
+		.clearfix;
+		li {
+			width: 48%;
+			float: left;
+			margin-right: 4%;
+			&:nth-child(2n),
+			.lt-ie9 &:first-child + li,
+			.lt-ie9 &:first-child + li + li + li,
+			.lt-ie9 &:first-child + li + li + li + li + li,
+			.lt-ie9 &:first-child + li + li + li + li + li + li + li,
+			.lt-ie9 &:first-child + li + li + li + li + li + li + li + li + li,
+			.lt-ie9 &:first-child + li + li + li + li + li + li + li + li + li + li + li,
+			.lt-ie9 &:first-child + li + li + li + li + li + li + li + li + li + li + li + li + li,
+			.lt-ie9 &:first-child + li + li + li + li + li + li + li + li + li + li + li + li + li + li + li,
+			.lt-ie9 &:first-child + li + li + li + li + li + li + li + li + li + li + li + li + li + li + li + li + li {
+				margin-right: 0px;
+			}
+		}
+	}
+}
+
+/**************************************************************************
+ * 6. Breadcrumb
+ */
+.breadcrumb {
+	background-color: transparent;
+	.border-radius(0px);
+
+	top: 0px;
+	font-size: 12px;
+	line-height: 38px;
+	font-weight: 300;
+
+}
+
+/**************************************************************************
+ * 7. Pagination
+ */
+.pagination {
+	& > li {
+		font-size: 18px;
+		line-height: 38px;
+		& > a,
+		& > span {
+			padding: 0px 12px;
+			border: none;
+			background-color: transparent;
+		}
+	}
+	& > li:first-child,
+	& > li:last-child {
+		& > a,
+		& > span {
+			.border-radius(0px);
+		}
+	}
+}
+
+/**************************************************************************
+ * 8. Sidenav
+ */
+.sidenav {
+	margin-bottom: 30px;
+	.nav {
+		& > li {
+			& > a {
+				padding: 4px 10px;
+				font-size: 13px;
+			}
+		}
+	}
+}
+
+/**************************************************************************
+ * 9. Carousel
+ */
+.widget.carousel,	
+.section.carousel {
+
+	.row & {
+		margin-right: -15px;
+		margin-left: -15px;
+	}
+
+	& > .ribbon {
+		z-index: 0;
+		margin-left: -5px;
+		margin-right: 0px;
+	}
+
+	.carousel-inner {
+		margin-top: -38px;
+		position: relative;
+		z-index: 1;
+		.item {
+			padding-top: 38px;
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+		.section-title,
+		.widget-title {
+			position: absolute;
+			z-index: 40;
+			left: 15px;
+			right: 0px;
+			& > a,
+			& > span,
+			& > .ribbon-inner {
+				.box-shadow(none);
+			}
+		}
+	}
+
+	.carousel-control {
+		z-index: 50;
+		line-height: 38px;
+		height: 38px;
+		width: 38px;
+		background-image: none;
+		background-color: transparent;
+		flter: none;
+
+		&.left {
+			left: auto;
+			right: 38px;
+		}
+	}
+	
+}
+
+ /**************************************************************************
+ * 10. Widget calendar
+ */
+.widget_calendar {
+	& > div {
+		position: relative;	
+	}
+	table {
+		margin-top: 15px;
+		width: 100%;
+		caption {
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		th {
+			line-height: 30px;
+			text-align: center;
+			padding: 0 10px;
+		}
+		td {
+			text-align: center;
+			padding: 0 8px;
+			line-height: 30px;
+			font-size: 12px;
+			border-top: 1px solid #eee;
+		}
+		tfoot {
+			td {
+				text-align: right;
+				&:first-child {
+					text-align: left;
+				}
+			}
+		}
+		#today {
+			background-color: #eee;
+		}
+	}
+}
+
+  /**************************************************************************
+ * 11. Collapsible panel
+ */
+.panel-group {
+	margin-bottom: 20px;
+}
+.panel,
+.panel-group .panel {
+	.border-radius(0px);
+	.box-shadow(none);
+}
+.panel {
+
+	& > .panel-heading {
+		padding: 0px;
+		border: none;
+		background-color: transparent;
+
+		.panel-title {
+			font-size: 14px;
+			font-family: 'Droid Sans', sans-serif;
+			font-weight: bold;
+		}
+
+		.panel-title a {
+			padding: 0px 10px;
+			line-height: 38px;
+			display: block;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.panel-body {
+		padding: 10px 10px;
+	}
+}
+
+.panel-default,
+.panel-primary,
+.panel-success,
+.panel-info,
+.panel-warning,
+.panel-danger   {
+	border: none;
+}
+
+/**************************************************************************
+ * 12. Tabs
+ */
+.nav-tabs {
+	& > li {
+		& > a {
+			.border-radiuses-no-clip(0px, 0, 0, 0px);
+			border: none;
+			font-family: 'Lato', sans-serif;
+			margin-left: 4px;
+			margin-right: 0px;
+			padding: 8px 15px;
+		}
+		&.active {
+			& > a,
+			& > a:hover,
+			& > a:focus {
+				border-top-width: 1px;
+				border: none;
+			}
+		}
+	}
+}
+
+
+/**************************************************************************
+ * 13. Ad/Banner
+ */
+.ad-wrapper {
+	padding-top: 20px;
+
+	.add-inner {
+		overflow: hidden;
+		max-width: 100%;
+	}
+
+	.container &.section {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.clearfix;
+}
+.ad {
+	margin: 0 auto 20px;
+
+	&.ad-728x90 {
+		width: 728px;
+		height: 90px;
+	}
+
+	&.ad-200x125 {
+		width: 200px;
+		height: 125px;
+	}
+	&.ad-410x125 {
+		width: 410px;
+		height: 125px;
+	}
+	&.ad-336x280 {
+		width: 336px;
+		height: 280px;
+	}
+	&.ad-300x250 {
+		width: 300px;
+		height: 250px;
+	}
+}
+
+
+
+/**************************************************************************
+ * 14. PrettyPhoto
+ */
+.pp_pic_holder {
+	.pp_content_container {
+		.pp_left {
+			padding-left: 5px;
+		}
+		.pp_right {
+			padding-right: 5px;
+		}
+		.pp_details {
+			margin-top: 7px;
+			.pp_description {
+				text-align: center;
+				font-size: 12px;
+				margin: 0px;
+			}
+		}
+	}
+	.pp_content {
+		.pp_close,
+		.pp_expand {
+			display: block;
+			font-size: 12px;
+			line-height: 24px;
+			width: 24px;
+			height: 24px;
+			background-image: none;
+			background-color: #000;
+			color: #fff;
+			.border-radius(500px);
+			text-align: center;
+			z-index: 20001;
+			position: absolute;
+			text-indent: 0px;
+			top: -14px;
+
+			&:hover {
+				background-image: none;
+				text-decoration: none;
+				background-color: #fff;
+				color: #000;
+			}
+		}
+
+		.pp_close {
+			font-size: 15px;
+			right: -10px;
+		}
+		.pp_expand {
+			right: 16px;
+		}
+
+		.pp_topHoverContainer {
+			display: none;
+			position: absolute;
+			z-index: 20000;
+			right: 0px;
+			top: 0px;
+		}
+		&:hover {
+			.pp_topHoverContainer {
+				display: block;
+			}
+		}
+
+		.pp_hoverContainer {
+			.pp_next,
+			.pp_previous {
+				background-image: none;
+				background-color: transparent;
+				text-indent: 0px;
+				span {
+					position: absolute;
+					display: none;
+					text-align: center;
+					background-color: #000;
+					color: #fff;
+					.border-radius(500px);
+					font-size: 12px;
+					line-height: 24px;
+					width: 24px;
+					height: 24px;
+					margin-top: -12px;
+					top: 50%;
+				}
+				&:hover {
+					span {
+						display: block;
+						background-image: none;
+						text-decoration: none;
+						&:hover {
+							background-color: #fff;
+							color: #000;
+						}
+					}
+				}
+			}
+
+			.pp_next {
+				span {
+					right: -14px;
+				}
+			}
+			.pp_previous {
+				span {
+					left: -14px;
+				}
+			}
+		}
+	}
+}
+.pp_top, .pp_bottom,
+.pp_top .pp_left, .pp_bottom .pp_left,
+.pp_top .pp_middle, .pp_bottom .pp_middle,
+.pp_top .pp_right, .pp_bottom .pp_right {
+	height: 5px;
+}
+a.pp_expand, a.pp_contract {
+	top: 5px;
+	right: 10px;
+}
+
+/**************************************************************************
+ * 								RESPONSIVE
+ *************************************************************************/
+@media (max-width: 520px) {
+	
+	.style-grid .entry-title {
+		font-size: 15px;
+		line-height: 18px;
+		margin-bottom: 0px;
+	}
+}
+
+
+@media (max-width: 768px) {
+	.style-thumbnail-text {
+		padding: 15px 20px;
+		height: auto;
+	}
+
+	blockquote.pulled-left {
+		float: none;
+		width: 80%;
+		margin-right: auto;
+		margin-left: auto;
+		text-align: left;
+	}
+
+	.comments-area .comment .media-list {
+		margin-left: 17px;
+	}
+
+	.style-hero {
+		&.hero-nav {
+			height: 50px;
+			.entry-title {
+				display: none;
+			}
+		}
+	}
+
+	.style-hero.hero-nav:nth-child(2),
+	.lt-ie9 .style-hero.hero-nav:first-child + li {
+		text-align: right;
+	}
+
+	.ad {
+		&.ad-728x90 {
+			display: none;
+		}
+	}
+
+}
+@media (min-width: 769px) {
+	.image.image-full,
+	.style-single .entry-content .flushed-left { 
+		margin-left: -(@content_indent + 15);
+	}
+
+	.widget-author .avatar {
+		position: absolute;
+		left: -110px;
+	}
+
+	.comments-area {
+		& > .comment-list {
+			margin-left: -87px;
+		}
+	}
+
+	@content_indent: 175px;
+	.indented {
+		margin-left: @content_indent;
+	}
+
+	blockquote.pulled-left {
+		margin-left: -(@content_indent - 30px);
+	}
+
+}
+@media (max-width: 991px) {
+	.style-large {
+		.entry-thumbnail {
+			margin-right: -15px;
+		}
+	}
+}
+
+
+@media (min-width: 992px) {
+	
+	.hero-sm-larger .entry-title {
+		font-size: 27px;
+		line-height: 33px;
+		margin-bottom: 7px;
+	}
+
+	.hero-sm-largest .entry-title {
+		font-size: 40px;
+		line-height: 45px;
+		margin-bottom: 10px;
+	}
+	
+	.hero-md-larger .entry-title {
+		font-size: 27px;
+		line-height: 33px;
+		margin-bottom: 7px;
+	}
+
+	.hero-md-largest .entry-title {
+		font-size: 40px;
+		line-height: 45px;
+		margin-bottom: 10px;
+	}
+}
+
+@media (min-width: 1200px) {
+	
+	.hero-sm-larger .entry-title,
+	.hero-md-larger .entry-title  {
+		font-size: 30px;
+		line-height: 36px;
+		margin-bottom: 10px;
+	}
+	
+	.hero-sm-largest .entry-title,
+	.hero-md-largest .entry-title {
+		font-size: 43px;
+		line-height: 48px;
+		margin-bottom: 13px;
+	}
+	
+	.hero-lg-larger .entry-title {
+		font-size: 30px;
+		line-height: 36px;
+		margin-bottom: 10px;
+	}
+	.hero-lg-largest .entry-title {
+		font-size: 43px;
+		line-height: 48px;
+		margin-bottom: 13px;
+	}
+
+	.hero-lg-normal .entry-title {
+		font-size: 18px;
+		line-height: 23px;
+	}
+
+	.style-hero {
+		&.hero-nav {
+			height: 115px;
+		}
+	}
+
+	.style-media {
+		.media-object {
+			width: 240px;
+			height: 170px;
+		}
+		.entry-title {
+			font-size: 24px;
+			line-height: 28px;
+		}
+	}
+
+	.style-thumbnail-text {
+		.entry-meta {
+			margin-bottom: 10px;
+		}
+		.entry-title {
+			font-size: 16px;
+			line-height: 21px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.style-media {
+		.entry-thumbnail {
+			float: none;
+			margin-bottom: 20px;
+		}
+		.media-body {
+			width: 100%;
+		}
+	}
+}
+
+@media (min-width: 1540px) {
+	.hero-xl-normal .entry-title {
+		font-size: 18px;
+		line-height: 23px;
+	}
+}

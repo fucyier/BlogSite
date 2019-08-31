@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66776E5D-8991-4465-B248-F9C5602CC843}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Blog.WebUI</RootNamespace>
+    <AssemblyName>Blog.WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET">
+      <HintPath>..\..\..\..\..\..\Projects\Test\Kaynak.Kodlar\Iskur.Portal\Iskur.Portal.Web.UI\bin\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\font-awesome\font\glyphicons-halflings-regular.svg" />
+    <Content Include="Contents\fonts\fontawesome-webfont.svg" />
+    <Content Include="Contents\img\csharp.png" />
+    <Content Include="Contents\img\asp.net.gif" />
+    <Content Include="Contents\base.css" />
+    <Content Include="Contents\css\bootstrap-theme.css" />
+    <Content Include="Contents\css\bootstrap-theme.min.css" />
+    <Content Include="Contents\css\bootstrap.css" />
+    <Content Include="Contents\css\bootstrap.min.css" />
+    <Content Include="Contents\colorschemes\dark.css" />
+    <Content Include="Contents\colorschemes\default.css" />
+    <Content Include="Contents\colorschemes\light.css" />
+    <Content Include="Contents\colorschemes\_master.css" />
+    <Content Include="Contents\components.css" />
+    <Content Include="Contents\font-awesome\css\font-awesome-ie7.css" />
+    <Content Include="Contents\font-awesome\css\font-awesome-ie7.min.css" />
+    <Content Include="Contents\font-awesome\css\font-awesome.css" />
+    <Content Include="Contents\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Contents\font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="Contents\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Contents\img\11.png" />
+    <Content Include="Contents\img\aspnet.jpg" />
+    <Content Include="Contents\img\dark-logo-retina.png" />
+    <Content Include="Contents\img\dark-logo.png" />
+    <Content Include="Contents\img\favicon.ico" />
+    <Content Include="Contents\img\light-logo-retina.png" />
+    <Content Include="Contents\img\light-logo.png" />
+    <Content Include="Contents\img\logo-retina.png" />
+    <Content Include="Contents\img\logo.png" />
+    <Content Include="Contents\img\placeholder.gif" />
+    <Content Include="Contents\libs.css" />
+    <Content Include="Contents\prettyPhoto\css\prettyPhoto.css" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\default\loader.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\default\sprite.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="Contents\prettyPhoto\images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Contents\prettyPhoto\jquery.prettyPhoto.js" />
+    <Content Include="Contents\reset.css" />
+    <Content Include="Contents\Themes\ckeditor\adapters\jquery.js" />
+    <Content Include="Contents\Themes\ckeditor\build-config.js" />
+    <Content Include="Contents\Themes\ckeditor\ckeditor.js" />
+    <Content Include="Contents\Themes\ckeditor\config.js" />
+    <Content Include="Contents\Themes\ckeditor\contents.css" />
+    <Content Include="Contents\Themes\ckeditor\lang\af.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ar.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\az.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\bg.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\bn.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\bs.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ca.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\cs.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\cy.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\da.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\de-ch.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\de.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\el.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\en-au.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\en-ca.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\en-gb.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\en.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\eo.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\es-mx.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\es.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\et.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\eu.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\fa.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\fi.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\fo.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\fr-ca.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\fr.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\gl.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\gu.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\he.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\hi.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\hr.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\hu.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\id.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\is.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\it.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ja.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ka.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\km.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ko.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ku.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\lt.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\lv.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\mk.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\mn.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ms.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\nb.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\nl.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\no.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\oc.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\pl.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\pt-br.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\pt.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ro.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ru.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\si.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\sk.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\sl.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\sq.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\sr-latn.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\sr.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\sv.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\th.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\tr.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\tt.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\ug.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\uk.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\vi.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\zh-cn.js" />
+    <Content Include="Contents\Themes\ckeditor\lang\zh.js" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="Contents\Themes\ckeditor\styles.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\summernote.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Create.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Contents\font-awesome\font\fontawesome-webfont.woff2" />
+    <Content Include="Contents\font-awesome\font\glyphicons-halflings-regular.eot" />
+    <Content Include="Contents\font-awesome\font\glyphicons-halflings-regular.ttf" />
+    <Content Include="Contents\font-awesome\font\glyphicons-halflings-regular.woff" />
+    <Content Include="Contents\font-awesome\font\glyphicons-halflings-regular.woff2" />
+    <Content Include="Contents\fonts\fontawesome-webfont.eot" />
+    <Content Include="Contents\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Contents\fonts\fontawesome-webfont.woff" />
+    <Content Include="Contents\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Contents\fonts\FontAwesome.otf" />
+    <Content Include="Contents\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.unveil.min.js" />
+    <Content Include="Areas\Admin\Views\Tag\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Authors\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Tag\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Tag\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Tag\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Tag\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Manage.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\View.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\Delete.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.6.2-respond-1.1.0.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\prefixfree.min.js" />
+    <Content Include="Scripts\summernote.js" />
+    <Content Include="Views\Shared\banner-index.html" />
+    <Content Include="Views\Shared\banner-single.html" />
+    <Content Include="Views\Shared\blog-grids.html" />
+    <Content Include="Views\Shared\blog.html" />
+    <Content Include="Views\Shared\components.html" />
+    <Content Include="Views\Shared\index.html" />
+    <Content Include="Views\Shared\reviews.html" />
+    <Content Include="Views\Shared\single-full.html" />
+    <Content Include="Views\Shared\single.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthorsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagController.cs" />
+    <Compile Include="Areas\Admin\Models\AccountModels\AccountsAdminListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AccountModels\AccountViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\AccountModels\AssignedRoleData.cs" />
+    <Compile Include="Areas\Admin\Models\AuthorModels\AssignedTagData.cs" />
+    <Compile Include="Areas\Admin\Models\AuthorModels\AuthorsAdminListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\CommentModels\CommentAdminListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\PostModels\AssignedTagData.cs" />
+    <Compile Include="Areas\Admin\Models\PostModels\PostsAdminListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\RoleModels\RoleAdminListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\RoleModels\RoleViewModels.cs" />
+    <Compile Include="Areas\Admin\Models\TagModels\TagsAdminListViewModel.cs" />
+    <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HTMLHelpers\CommentHelpers.cs" />
+    <Compile Include="HTMLHelpers\PagingHelpers.cs" />
+    <Compile Include="Infrastructure\IdentityExtensions.cs" />
+    <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
+    <Compile Include="Infrastructure\SeoFriendlyRoute.cs" />
+    <Compile Include="Models\BlogWebUIContext.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\PostsListViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Contents\base.less" />
+    <Content Include="Contents\components.less" />
+    <Content Include="Contents\libs.less" />
+    <Content Include="Contents\colorschemes\dark.less" />
+    <Content Include="Contents\colorschemes\default.less" />
+    <Content Include="Contents\colorschemes\light.less" />
+    <Content Include="Contents\colorschemes\_master.less" />
+    <Content Include="Contents\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Contents\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Contents\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout2Column.cshtml" />
+    <Content Include="Contents\font-awesome\font\fontawesome-webfont.eot" />
+    <Content Include="Contents\font-awesome\font\fontawesome-webfont.ttf" />
+    <Content Include="Contents\font-awesome\font\fontawesome-webfont.woff" />
+    <Content Include="Contents\font-awesome\font\FontAwesome.otf" />
+    <Content Include="Views\Nav\Index.cshtml" />
+    <Content Include="Views\Nav\PostSummary.cshtml" />
+    <Content Include="Views\Nav\GetTopPosts.cshtml" />
+    <Content Include="Views\Nav\GetFeaturedPosts.cshtml" />
+    <Content Include="Views\Post\Detail.cshtml" />
+    <Content Include="Views\Post\PreviousPost.cshtml" />
+    <Content Include="Views\Post\NextPost.cshtml" />
+    <Content Include="Views\Nav\MostCommentedPosts.cshtml" />
+    <Content Include="Views\Nav\MostViewedPosts.cshtml" />
+    <Content Include="Views\Post\PostComments.cshtml" />
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Areas\Admin\Views\Post\Update.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Authors\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Authors\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Authors\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Authors\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Post\Edit.cshtml" />
+    <Content Include="Contents\Themes\ckeditor\CHANGES.md" />
+    <Content Include="Contents\Themes\ckeditor\LICENSE.md" />
+    <Content Include="Contents\Themes\ckeditor\README.md" />
+    <Content Include="Contents\Themes\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Views\Post\RelatedItems.cshtml" />
+    <Content Include="Views\Nav\GetAllTags.cshtml" />
+    <Content Include="Views\Nav\SelectedTopics.cshtml" />
+    <Content Include="Views\Nav\TopTabs.cshtml" />
+    <Content Include="Views\Nav\LatestDiscussion.cshtml" />
+    <Content Include="Views\Nav\FeaturedMenuTopics.cshtml" />
+    <Content Include="Views\Nav\MenuTagTopics.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Contents\Themes\ckeditor\plugins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Business\Blog.Business.csproj">
+      <Project>{239b73a8-d00b-4e54-9dfe-5e3e9110e16d}</Project>
+      <Name>Blog.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.DataAccess\Blog.DataAccess.csproj">
+      <Project>{96A49358-F26D-4071-B6A1-54B5C8F145BB}</Project>
+      <Name>Blog.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blog.Domain\Blog.Domain.csproj">
+      <Project>{340745a3-263f-4f8d-a3ab-96ef62adfd48}</Project>
+      <Name>Blog.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5018</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5010/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

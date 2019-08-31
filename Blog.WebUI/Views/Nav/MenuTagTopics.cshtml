@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Tag>
+@foreach (var itemTag in Model)
+{
+    <li>
+        <a href="#" data-toggle="li">@itemTag.TagText</a>
+        
+
+        <div class="subnav-wrapper">
+            <ul class="subnav-entries">
+                @foreach (var item in itemTag.Posts)
+                {
+                    <li><a href="@Url.Action("Detail","Post", new { postId = @item.GenerateSlug() })">@item.PostTitle</a></li>
+                }
+            </ul>
+        </div>
+    </li>
+}

@@ -1,0 +1,722 @@
+/**
+ * see *.less for some documentation
+ * some helpers located on libs.less
+ */
+.inline-block {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+/**************************************************************************
+ *
+ * 1. Base 
+ * 2. Header
+ * 3. Header Navbar
+ *
+ * 4. Components
+ * 		4.1. Base
+ * 		4.2. Entry Styles
+ * 		4.3. Comments Area
+ * 		4.4. Lists
+ * 		4.5. Breadcrumb
+ * 		4.6. Pagination
+ * 		4.7. Sidenav
+ * 		4.8. Carousel
+ * 		4.9. Collapsible Panel
+ * 		4.10. Tab
+ * 		4.11. Buttons
+ * 		4.12. Progress Bar
+ * 		4.13. Overlay
+ * 		4.14. Table
+ * 		4.15. AD/banner
+ * 		4.16. Widget calendar
+ * 5. Footer
+ * 6. Responsive
+ */
+body {
+  background-color: #f8f1f1;
+  color: #444444;
+}
+a {
+  color: #262626;
+}
+a:hover {
+  color: #000000;
+}
+.bg-page {
+  background-color: #f8f1f1;
+}
+.bg-base {
+  background-color: #ffffff;
+}
+.bg-base  > .entries > .entry:not(.style-grid) .entry-title a {
+  color: #000000;
+}
+.bg-primary {
+  background-color: #dfdfdf;
+}
+.bg-focus {
+  background-color: #232323;
+}
+.bg-secodary {
+  background-color: #efe0e0;
+}
+.bg-bar {
+  background-color: #161616;
+}
+.section-no-margin-bottom,
+.section.carousel {
+  border-bottom: 4px solid #161616;
+}
+.form-control {
+  background-color: #f8f1f1;
+  border-color: rgba(69, 69, 69, 0.3);
+}
+/**************************************************************************
+ * 2. Header 
+ */
+.header-navbar .header-navbar-inner {
+  background-color: #161616;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+.header-navbar .header-navbar-inner:after {
+  border-left-color: #111111;
+}
+.header-navbar .header-navbar-inner .btn-icon {
+  color: #232323;
+  background-color: #ffffff;
+}
+.header-navbar .header-navbar-inner .btn-icon:hover,
+.header-navbar .header-navbar-inner .btn-icon:focus,
+.header-navbar .header-navbar-inner .btn-icon.focus {
+  color: #232323;
+  background-color: #ffffff;
+}
+.scrolled .header-navbar .navbar-brand {
+  border-right-color: #1b1b1b;
+}
+.header-navbar .navbar-brand a {
+  background-color: #232323;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+.header-navbar .navbar-brand a:after {
+  border-right-color: #1b1b1b;
+}
+.scrolled .header-navbar .navbar-brand a {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #161616;
+}
+.search-wrapper .search-wrapper-inner {
+  border-bottom: 1px dotted #dfdfdf;
+}
+.search-wrapper input[type="text"] {
+  color: #d9d9d9;
+}
+/**************************************************************************
+ * 3. Header Navbar
+ */
+.header-navbar {
+  color: #d9d9d9;
+}
+.header-navbar .subnav-header {
+  color: #d9d9d9;
+}
+.header-navbar a {
+  color: #d9d9d9;
+}
+.header-navbar a:hover,
+.header-navbar li.active > a,
+.header-navbar li.active > a:hover {
+  color: #ffffff;
+}
+.header-navbar li a:hover,
+.header-navbar li li.active > a,
+.header-navbar li li.active > a:hover {
+  color: #ffffff;
+  background-color: #161616;
+}
+.header-navbar .nav-pages a {
+  color: #c58b8b;
+}
+.header-navbar .nav-pages a:hover {
+  color: #000000;
+  background-color: transparent;
+}
+.nav.navbar-nav li .subnav-wrapper {
+  border-top-color: #ffffff;
+  background-color: #232323;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+.nav.navbar-nav  > li.nav-all {
+  border-left-color: #232323;
+}
+.nav.navbar-nav  > li.nav-all  > a {
+  color: #ffffff;
+}
+.navbar-nav li .subnav-wrapper.subnav-tabbed {
+  background-color: #161616;
+}
+.header-navbar li .subnav-tabbed-tabs li.active > a {
+  background-color: #232323;
+}
+.subnav-tabbed-panels {
+  background-color: #232323;
+}
+.subnav-entries li {
+  border-top: 1px dashed #161616;
+}
+.subnav-entries li:first-child {
+  border-top: none;
+}
+/**************************************************************************
+ * 4. Components
+ */
+/**************************************************************************
+ * 		4.1 Base
+ */
+.comments-count-balloon {
+  color: #444444;
+  background-color: #ffffff;
+}
+.comments-count-balloon:after {
+  border-left-color: #ffffff;
+}
+.comments-count-balloon.bg-focus {
+  background-color: #232323;
+  color: #dfdfdf;
+}
+.comments-count-balloon.bg-focus:after {
+  border-left-color: #232323;
+}
+.comments-count-balloon.bg-primary {
+  background-color: #dfdfdf;
+  color: #232323;
+}
+.comments-count-balloon.bg-primary:after {
+  border-left-color: #dfdfdf;
+}
+.comments-count-balloon em {
+  color: #444444;
+}
+.ribbon  > a,
+.ribbon  > span,
+.ribbon  > .ribbon-inner {
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  background-color: #dfdfdf;
+  color: #232323;
+}
+.ribbon a:hover {
+  text-decoration: none;
+}
+.ribbon  > span,
+.ribbon  > .ribbon-inner {
+  color: #232323;
+}
+.ribbon  > span a,
+.ribbon  > .ribbon-inner a {
+  color: #232323;
+}
+.ribbon  > span a:hover,
+.ribbon  > .ribbon-inner a:hover {
+  -webkit-opacity: 0.7;
+  -moz-opacity: 0.7;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+.ribbon.ribbon-highlight  > a,
+.ribbon.ribbon-highlight  > span,
+.ribbon.ribbon-highlight  > .ribbon-inner {
+  background-color: #ffffff;
+  color: #333333;
+}
+.ribbon.ribbon-highlight  > a:hover {
+  background-color: #f2f2f2;
+}
+.ribbon.ribbon-highlight  > span,
+.ribbon.ribbon-highlight  > .ribbon-inner {
+  color: #333333;
+}
+.ribbon.ribbon-highlight  > span a,
+.ribbon.ribbon-highlight  > .ribbon-inner a {
+  color: #333333;
+}
+.ribbon.ribbon-focus  > a,
+.ribbon.ribbon-focus  > span,
+.ribbon.ribbon-focus  > .ribbon-inner {
+  background-color: #232323;
+  color: #dfdfdf;
+}
+.ribbon.ribbon-focus  > a:hover {
+  background-color: #161616;
+}
+.ribbon.ribbon-focus  > span,
+.ribbon.ribbon-focus  > .ribbon-inner {
+  color: #dfdfdf;
+}
+.ribbon.ribbon-focus  > span a,
+.ribbon.ribbon-focus  > .ribbon-inner a {
+  color: #dfdfdf;
+}
+.ribbon:after {
+  border-right-color: #111;
+}
+/**************************************************************************
+ * 		4.2 Entry Styles
+ */
+.style-score-widget .score:after {
+  border-right-color: #c6c6c6;
+}
+.style-score-widget .score-bar {
+  background-color: #dedede;
+  border-bottom-color: #c4c4c4;
+}
+.style-score-widget .score-bar i {
+  background-color: #e6e6e6;
+  border-bottom-color: #cccccc;
+}
+.style-review-score {
+  background-color: #ffffff;
+  color: #333333;
+}
+.style-review-list .style-review-score {
+  background-color: #ffffff;
+  color: #333333;
+}
+.style-single h1,
+.style-single h2,
+.style-single h3,
+.style-single h4,
+.style-single h5 {
+  color: #000000;
+}
+.style-single h1,
+.style-single h2,
+.style-single h3 {
+  border-bottom-color: #9d9d9d;
+}
+.after-entry hr {
+  border-top: 1px dashed #9d9d9d;
+}
+.page-header {
+  border-bottom-color: #9d9d9d;
+}
+.page-header .page-title {
+  color: #000000;
+}
+.style-hero.hero-nav .small {
+  color: #ffffff;
+}
+.style-recent-list {
+  border-top-color: #ffffff;
+}
+.style-thumbnail-text {
+  border-top: 1px solid #ecd9d9;
+  border-left: 1px solid #ecd9d9;
+}
+.style-thumbnail-text:first-child {
+  border-left: none;
+}
+.style-thumbnail-text a {
+  display: block;
+}
+.style-grid {
+  background-color: #dfdfdf;
+}
+.style-grid .entry-header {
+  color: #ffffff;
+}
+.style-grid .entry-header .entry-meta a {
+  color: #ffffff;
+}
+.style-grid .entry-header .entry-title a {
+  color: #ffffff;
+}
+.style-grid .entry-header .entry-title a:hover {
+  color: #ffffff;
+}
+.style-grid .entry-header p.small:first-child {
+  color: #ffffff;
+}
+.style-grid .entry-header p.small:first-child a {
+  color: #ffffff;
+}
+/**************************************************************************
+ * 		4.3. Comments Area
+ */
+.comments-area {
+  padding-top: 20px;
+}
+.comments-area  > .comment-list {
+  border-top: 2px solid #9d9d9d;
+}
+.comments-area .comment {
+  border-left-color: #9d9d9d;
+}
+/**************************************************************************
+ * 		4.4. Lists
+ */
+.coverageList {
+  border: 5px solid #ffffff;
+  /* Fallback for web browsers that doesn't support RGBa */
+
+  background-color: #ffffff;
+  /* RGBa with 0.6 opacity */
+
+  background-color: rgba(255, 255, 255, 0.6);
+  /* For IE 5.5 - 7 */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#99ffffff', endColorstr='#99ffffff');
+  /* For IE 8 */
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff, endColorstr=#99ffffff)";
+}
+.tagcloud a,
+.post-tags a {
+  color: #232323;
+  /* Fallback for web browsers that doesn't support RGBa */
+
+  background-color: #dfdfdf;
+  /* RGBa with 0.6 opacity */
+
+  background-color: rgba(222, 222, 222, 0.6);
+  /* For IE 5.5 - 7 */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#99ffffff', endColorstr='#99ffffff');
+  /* For IE 8 */
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99dedede, endColorstr=#99dedede)";
+}
+.tagcloud a:hover,
+.post-tags a:hover {
+  /* Fallback for web browsers that doesn't support RGBa */
+
+  background-color: #dfdfdf;
+  /* RGBa with 0.6 opacity */
+
+  background-color: #dedede;
+  /* For IE 5.5 - 7 */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#99ffffff', endColorstr='#99ffffff');
+  /* For IE 8 */
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffdedede, endColorstr=#ffdedede)";
+}
+/**************************************************************************
+ *		4.5. Breadcrumb
+ */
+.breadcrumb  > li.active {
+  color: inherit;
+}
+.breadcrumb  > li + li:before {
+  color: inherit;
+  -webkit-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+/**************************************************************************
+ * 		4.6. Pagination
+ */
+.pagination  > li  > span,
+.pagination  > li  > a,
+.pagination  > li  > span:hover {
+  background-color: transparent;
+  color: #262626;
+}
+.pagination  > li.active > span,
+.pagination  > li.active > span:hover,
+.pagination  > li a:hover {
+  background-color: transparent;
+  color: #ffffff;
+}
+/**************************************************************************
+ * 		4.7. Sidenav
+ */
+.sidenav .nav {
+  /* Fallback for web browsers that doesn't support RGBa */
+
+  background-color: #f8f1f1;
+  /* RGBa with 0.6 opacity */
+
+  background-color: rgba(248, 241, 241, 0.4);
+  /* For IE 5.5 - 7 */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#99ffffff', endColorstr='#99ffffff');
+  /* For IE 8 */
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#66f8f1f1, endColorstr=#66f8f1f1)";
+}
+.sidenav .nav  > li {
+  border-bottom: 1px solid #ffffff;
+}
+.sidenav .nav  > li  > a:hover,
+.sidenav .nav  > li  > a:focus {
+  background-color: #f8f1f1;
+}
+/**************************************************************************
+ * 		4.8. Carousel
+ */
+.section.carousel .carousel-control,
+.widget.carousel .carousel-control {
+  /* Fallback for web browsers that doesn't support RGBa */
+
+  background-color: #000000 transparent;
+  /* RGBa with 0.6 opacity */
+
+  background-color: rgba(0, 0, 0, 0.4);
+  /* For IE 5.5 - 7 */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#66000000', endColorstr='#66000000');
+  /* For IE 8 */
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000)";
+}
+/**************************************************************************
+ * 		4.9. Collapsible Panel
+ */
+.panel,
+.panel-group .panel {
+  background-color: transparent;
+}
+.panel-primary  > .panel-heading {
+  background-color: transparent;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  -o-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.panel-primary  > .panel-heading .panel-title a {
+  color: #dfdfdf;
+  background-color: #232323;
+}
+.panel-primary  > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #9d9d9d;
+}
+/**************************************************************************
+ * 		4.10. Tab
+ */
+.nav-tabs {
+  border-bottom-color: #303030;
+  background-color: #232323;
+  border-top: 4px solid #232323;
+}
+.nav-tabs  > li  > a {
+  color: #dfdfdf;
+}
+.nav-tabs  > li  > a:hover,
+.nav-tabs  > li  > a:focus {
+  border-bottom-color: transparent;
+  background-color: #ffffff;
+  color: #444444;
+}
+.nav-tabs  > li.active  > a,
+.nav-tabs  > li.active  > a:hover,
+.nav-tabs  > li.active  > a:focus {
+  background-color: #ffffff;
+  color: #444444;
+}
+/**************************************************************************
+ * 		4.11. Buttons
+ */
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  -o-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.btn-default {
+  color: #444444;
+  border-color: #444444;
+  background-color: transparent;
+}
+.btn-default:hover,
+.btn-default:active,
+.btn-default.active {
+  color: #f8f1f1;
+  background-color: #444444;
+  border-color: #444444;
+}
+.btn-warning {
+  color: #232323;
+  border-color: #f7f7f7;
+  background-color: #ffffff;
+}
+.btn-warning:hover,
+.btn-warning:active,
+.btn-warning.active {
+  color: #232323;
+  background-color: #f2f2f2;
+  border-color: #f7f7f7;
+}
+.btn-primary {
+  border-color: #d2d2d2;
+  background-color: #dfdfdf;
+  color: #232323;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active {
+  color: #232323;
+  background-color: #d2d2d2;
+  border-color: #cdcdcd;
+}
+/**************************************************************************
+ * 		4.12.  Progress Bar
+ */
+.progress-bar {
+  background-color: #444444;
+  color: #333333;
+}
+/**************************************************************************
+ * 		4.13. Overlay
+ */
+.overlay.overlay-primary {
+  -webkit-box-shadow: inset 2px 4px 10px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 2px 4px 10px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 2px 4px 10px 5px rgba(0, 0, 0, 0.15);
+  background: -moz-linear-gradient(top, rgba(36, 36, 36, 0.6) 0%, rgba(36, 36, 36, 0.8) 99%, rgba(36, 36, 36, 0.8) 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(36, 36, 36, 0.6)), color-stop(99%, rgba(36, 36, 36, 0.8)), color-stop(100%, rgba(36, 36, 36, 0.8)));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, rgba(36, 36, 36, 0.6) 0%, rgba(36, 36, 36, 0.8) 99%, rgba(36, 36, 36, 0.8) 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, rgba(36, 36, 36, 0.6) 0%, rgba(36, 36, 36, 0.8) 99%, rgba(36, 36, 36, 0.8) 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, rgba(36, 36, 36, 0.6) 0%, rgba(36, 36, 36, 0.8) 99%, rgba(36, 36, 36, 0.8) 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, rgba(36, 36, 36, 0.6) 0%, rgba(36, 36, 36, 0.8) 99%, rgba(36, 36, 36, 0.8) 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99#dfdfdf', endColorstr='#cc#dfdfdf',GradientType=0 );
+  /* IE6-9 */
+
+}
+/**************************************************************************
+ * 		4.14. Table
+ */
+.table-bordered {
+  border: 1px solid #f8f1f1;
+}
+.table-bordered  > thead > tr > th,
+.table-bordered  > tbody > tr > th,
+.table-bordered  > tfoot > tr > th,
+.table-bordered  > thead > tr > td,
+.table-bordered  > tbody > tr > td,
+.table-bordered  > tfoot > tr > td {
+  border: 1px solid #f8f1f1;
+}
+.table-bordered  > thead > tr > th,
+.table-bordered  > thead > tr > td {
+  border-bottom-width: 2px;
+}
+.table-hover  > tbody  > tr:hover td,
+.table-hover  > tbody  > tr:hover th {
+  /* Fallback for web browsers that doesn't support RGBa */
+
+  background-color: #f8f1f1;
+  /* RGBa with 0.6 opacity */
+
+  background-color: rgba(248, 241, 241, 0.7);
+  /* For IE 5.5 - 7 */
+
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#99ffffff', endColorstr='#99ffffff');
+  /* For IE 8 */
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#b3f8f1f1, endColorstr=#b3f8f1f1)";
+}
+/**************************************************************************
+ * 		4.15. Ad/ banner
+ */
+.ad-wrapper.widget {
+  border-top: 2px solid #9d9d9d;
+}
+/**************************************************************************
+ * 		4.16. Widget calendar
+ */
+.widget_calendar table td {
+  border-top: 1px solid #9d9d9d;
+}
+.widget_calendar table #today {
+  background-color: #ffffff;
+  color: #333333;
+}
+/**************************************************************************
+ * 5. Footer
+ */
+.footer-area {
+  color: #c58b8b;
+}
+.footer-area a {
+  color: #c58b8b;
+}
+.footer-area a:hover {
+  color: #000000;
+}
+.footer-area .widget {
+  margin-bottom: 20px;
+}
+.footer-area .widget .widget-title {
+  color: #c58b8b;
+  border-color: rgba(197, 140, 140, 0.3);
+}
+.footer-area .footer-bottom {
+  border-color: rgba(197, 140, 140, 0.3);
+}
+/**************************************************************************
+ * 5. Responsive
+ */
+@media (max-width: 768px) {
+  .header-navbar,
+  body.scrolled .header-navbar {
+    border-right-color: #1b1b1b;
+  }
+  .header-navbar .navbar-brand a,
+  body.scrolled .header-navbar .navbar-brand a {
+    background-color: #161616;
+  }
+}

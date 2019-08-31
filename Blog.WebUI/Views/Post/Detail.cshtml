@@ -1,0 +1,123 @@
+﻿@model Blog.Domain.Concrete.Post
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+@section PreviousNextPosts
+{
+    <div class="section section-no-margin-bottom row entries bg-primary">
+        @Html.Action("PreviousPost", "Post")
+        @Html.Action("NextPost", "Post")
+    </div>
+}
+
+<div class="col-md-8 bg-base col-lg-8 col-xl-9">
+    <div class="ribbon ribbon-highlight">
+        <ol class="breadcrumb ribbon-inner">
+            <li><a href="#">Home</a></li>
+            <li>
+                @foreach (var item in Model.Tags)
+                {
+                    @Html.ActionLink(item.TagText, "Index", "Nav", new { postTagId = item.TagId }, null)
+                    @:&nbsp
+                }
+            </li>
+            <li class="active">@Model.PostTitle</li>
+        </ol>
+    </div>
+
+    <header class="page-header">
+        <div class="page-meta pull-right hidden-xs">
+            <a href="#comments">
+                <span class="comments-count-balloon bg-primary">@Model.Comments.Where(x=>x.Status==true).Count()<em>Yorumlar</em></span>
+            </a>
+        </div>
+        <h2 class="page-title">
+            @Model.PostTitle
+        </h2>
+    </header>
+    <article class="entry style-single type-post">
+
+        <figure class="entry-thumbnail">
+          
+            <img  width="680" height="452" src="@Url.Action("GetImage", "Post",new { Model.PostId })" style="width: 680px;height:452px;"/>
+          
+        </figure>
+        <div class="entry-meta indented">
+            <span class="author">by @Model.Author.AuthorName</span>
+            <span class="entry-date">@Model.PostDate.ToShortDateString()></span>
+            <span class="category">
+                In
+                @foreach (var item in Model.Tags)
+                {
+                    @item.TagText
+                    @:&nbsp
+           }
+            </span>
+        </div>
+        <div class="entry-content indented">
+            <p class="lead">
+                @Html.Raw(HttpUtility.HtmlDecode(@Model.PostDetail.PostText))
+            </p>
+        </div>
+    </article>
+    <div class="after-entry indented">
+        <hr>
+        <aside class="widget post-tags">
+            <i class="icon-tags"></i> Tags:
+            @foreach (var item in Model.Tags)
+            {
+
+                @Html.ActionLink(item.TagText, "Index", "Nav", new { postTagId = item.TagId }, null)
+            }
+        </aside>
+        <hr>
+        <aside class="widget widget-author media">
+
+            <figure class="entry-author-avatar media-object avatar pull-left ">
+               
+                <img alt="" width="230" height="230" class="img-circle" src="@Url.Action("GetImage", "Authors",new { Model.Author.AuthorId })" />
+            </figure>
+            <div class="media-body">
+                <h4 class="entry-author-name">By @Model.Author.AuthorName</h4>
+                <p>
+                    @Model.Author.AuthorInfo
+                </p>
+            </div>
+        </aside>
+        <hr>
+        <aside class="widget">
+            <h4 class="widget-title">Benzer Makaleler</h4>
+            <div class="entries row">
+                @Html.Action("RelatedItems","Post",new { tagId=Model.Tags.AsEnumerable().FirstOrDefault().TagId })
+            </div>
+        </aside>
+      
+        <hr>
+        <aside class="widget">
+            Paylaş:
+            <a href="#" class="" onclick="window.open(
+								'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+								'facebook-share-dialog',
+								'width=626,height=436');
+								return false;"><span class="icon-stack"><i class="icon-sign-blank icon-stack-base"></i><i class="icon-facebook icon-light"></i></span></a>
+            <a href="#" class="" onclick="window.open(
+								'http://twitter.com/home?status='+encodeURIComponent(location.href),
+								'facebook-share-dialog',
+								'width=626,height=436');
+								return false;"><span class="icon-stack"><i class="icon-sign-blank icon-stack-base"></i><i class="icon-twitter icon-light"></i></span></a>
+            <a href="#" class="" onclick="window.open(
+								'https://plus.google.com/share?url='+encodeURIComponent(location.href),
+								'facebook-share-dialog',
+								'width=500,height=436');
+								return false;"><span class="icon-stack"><i class="icon-sign-blank icon-stack-base"></i><i class="icon-google-plus icon-light"></i></span></a>
+            <a href="#" class="" onclick="javascript:void((function(){var e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)})());"><span class="icon-stack"><i class="icon-sign-blank icon-stack-base"></i><i class="icon-pinterest icon-light"></i></span></a>
+        </aside> 
+    </div>
+
+
+
+
+            @Html.Action("PostComments", "Post", new { postId = Model.PostId })
+    </div><!--/.col-md-8.col-lg-8.col-xl-9-->

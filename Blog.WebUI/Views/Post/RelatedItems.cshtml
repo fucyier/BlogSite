@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Blog.Domain.Concrete.Post>
+
+@foreach (var item in Model)
+{
+    <article class="entry type-post style-thumbnail col-xs-3 col-sm-3">
+        <figure class="entry-thumbnail">
+            <img alt="" width="230" height="230" src="@Url.Action("GetImage", "Post",new { item.PostId })" style="width: 230px;height:230px;" />
+        </figure>
+        <h3 class="entry-title">
+           
+            <a href="@Url.Action("Detail","Post", new { postId =item.GenerateSlug() })">
+                @item.PostShortDetail
+            </a>
+</h3>
+    </article>
+}
+
